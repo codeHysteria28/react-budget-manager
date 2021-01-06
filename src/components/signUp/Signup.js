@@ -54,6 +54,8 @@ export default class Signup extends  React.Component {
         }
     }
 
+    // toto je test
+
     render() {
         return (
             <MDBContainer className="signup_cont">
