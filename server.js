@@ -10,6 +10,10 @@ app.use(bodyParser.json());
 app.use(cors());
 require('dotenv').config()
 
+// Schemas
+import User from './Schemas/User';
+
+
 db.on('error', console.error.bind(console, "mongo conn err"));
 
 db.on('connected', () => {
@@ -22,13 +26,17 @@ app.get('/', (req,res) => {
 
 app.post('/save', (req,res) => {
    console.log(req.body);
-   db.collection('user_login').insertOne(req.body, (err, data) => {
-      if(err){
-         console.log(err);
-      }else {
-         res.send('saved to db');
-      }
-   })
+   if(req.body !== {}) {
+      const user = new User({ 
+         username: req.body.username,
+         password: req.body.password,
+         conf_password: req.body.conf_password,
+         created_at: req.body.created_at
+      });
+      user.save();
+   }else {
+      console.log("error saving data");
+   }
 });
 
 app.get('/ping', (req,res) => {

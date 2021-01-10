@@ -3,6 +3,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 import "./Signup.css";
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 export default class Signup extends  React.Component {
     constructor(props) {
@@ -40,10 +41,7 @@ export default class Signup extends  React.Component {
             await this.errors(user_obj.username, user_obj.password, user_obj.conf_password);
 
             if(this.state.usernameErr !== "" || this.state.passErr !== "" || this.state.conf_password !== "") {
-                Swal.fire({
-                    'icon': 'error',
-                    'title': 'Something went wrong, please try again.'
-                });
+                return false;
             }else {
                 axios.post('http://localhost:1998/save', user_obj).then((res) => {
                     console.log(res);
@@ -51,6 +49,10 @@ export default class Signup extends  React.Component {
             }
         }catch(err) {
             console.log(err);
+            Swal.fire({
+                'icon': 'error',
+                'title': 'Something went wrong, please try again.'
+            });
         }
     }
 
@@ -62,6 +64,7 @@ export default class Signup extends  React.Component {
                 <MDBRow className="signup_row">
                     <MDBCol md="6 mx-auto">
                         <form id="sign_form" onSubmit={this.signup.bind(this)}>
+                            <input type="hidden" value={moment().format('MMM Do YY')} name="created_at"/>
                             <p className="h4 text-center mb-4">Sign in</p>
                             <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
                                 Your Username
