@@ -5,14 +5,14 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import moment from 'moment';
 
-export default class Signup extends  React.Component {
+class Signup extends  React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             usernameErr: "",
             passErr: "",
-            conf_password: "",
+            conf_password: ""
         }
     }
 
@@ -43,8 +43,22 @@ export default class Signup extends  React.Component {
             if(this.state.usernameErr !== "" || this.state.passErr !== "" || this.state.conf_password !== "") {
                 return false;
             }else {
-                axios.post('http://localhost:1998/save', user_obj).then((res) => {
-                    console.log(res);
+                axios.post('http://localhost:1998/register', user_obj).then((res) => {
+                    if(res.data === "success") {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Registration was successful!',
+                            confirmButtonText: `Continue`,
+                        }).then((result) => {
+                            window.location = '/login';
+                        });
+                    }else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Something went wrong with registration, please try again.',
+                            text: `${res.data}`
+                        });
+                    }
                 });
             }
         }catch(err) {
@@ -56,7 +70,9 @@ export default class Signup extends  React.Component {
         }
     }
 
-    // toto je test
+    login_screen = () => {
+        window.location = '/login';
+    }
 
     render() {
         return (
@@ -65,7 +81,7 @@ export default class Signup extends  React.Component {
                     <MDBCol md="6 mx-auto">
                         <form id="sign_form" onSubmit={this.signup.bind(this)}>
                             <input type="hidden" value={moment().format('MMM Do YY')} name="created_at"/>
-                            <p className="h4 text-center mb-4">Sign in</p>
+                            <p className="h4 text-center mb-4">Registration</p>
                             <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
                                 Your Username
                             </label>
@@ -84,7 +100,8 @@ export default class Signup extends  React.Component {
                             {this.state.conf_password ? <p className="text-danger">{this.state.conf_password}</p>: ''}
                             <input type="password" id="defaultFormLoginPasswordExRep" className="form-control" name="conf_password"/>
                             <div className="text-center mt-4">
-                                <MDBBtn color="indigo" type="submit">Login</MDBBtn>
+                                <MDBBtn color="success" type="submit">Register</MDBBtn>
+                                <MDBBtn color="indigo" type="button" onClick={this.login_screen.bind(this)}>Already a member ?</MDBBtn>
                             </div>
                         </form>
                     </MDBCol>
@@ -93,3 +110,5 @@ export default class Signup extends  React.Component {
         );
     }
 };
+
+export default Signup;
