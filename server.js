@@ -31,6 +31,7 @@ require("./passportConfig")(passport);
 
 // Schemas
 const User = require('./Schemas/User');
+const Spending = require('./Schemas/SpendingTable');
 
 db.on('error', console.error.bind(console, "mongo conn err"));
 
@@ -40,6 +41,22 @@ db.on('connected', () => {
 
 app.get('/', (req,res) => {
    res.sendFile(path.join(__dirname,'public','index.html'));
+});
+
+app.post('/add_spending', (req,res) => {
+   if(req.body !== {}){
+      const spending = new Spending({
+         username: req.body.username,
+         item: req.body.item,
+         price: req.body.price,
+         paid_at: req.body.paid_at
+      });
+
+      spending.save();
+      res.send('Spending added successfully');
+   }else {
+      res.send('Some error happened, try again later');
+   }
 });
 
 // login user

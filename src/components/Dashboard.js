@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import Header from "./Header";
+// import Example from "./TestChart";
+import SpendingTableEntries from "./SpendingTableEntries";
 
 class Dashboard extends React.Component  {
     constructor(props) {
@@ -9,7 +11,8 @@ class Dashboard extends React.Component  {
 
         this.state = {
             data: null,
-            auth: false
+            auth: false,
+            spending: null
         }
     }
 
@@ -50,16 +53,15 @@ class Dashboard extends React.Component  {
     }
 
     render() {
+
+        console.log(this.state.modal);
         return (
             <div>
                 {this.state.auth
                     ?
                     <div>
-                        <Header/>
-                        <button onClick={this.getUser}>Submit</button>
-                        <button type="button" onClick={this.logout}>Logout</button>
-                        <p>{this.state.data ? this.state.data.username : null}</p>
-                        <p>{this.state.auth}</p>
+                        <Header user={this.state.data.username} logout={this.logout}/>
+                        <SpendingTableEntries user={this.state.data.username}/>
                     </div>
                     : ""
                 }
