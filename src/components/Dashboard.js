@@ -11,8 +11,7 @@ class Dashboard extends React.Component  {
 
         this.state = {
             data: null,
-            auth: false,
-            spending: null
+            auth: false
         }
     }
 
@@ -34,7 +33,7 @@ class Dashboard extends React.Component  {
         }).then((res) => {
             if(res.data !== ""){
                 this.setState({data: res.data});
-                this.setState({auth: true})
+                this.setState({auth: true});
             }else {
                 Swal.fire({
                     icon: 'error',
@@ -53,8 +52,6 @@ class Dashboard extends React.Component  {
     }
 
     render() {
-
-        console.log(this.state.modal);
         return (
             <div>
                 {this.state.auth

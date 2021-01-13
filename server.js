@@ -9,6 +9,9 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
+require('dotenv').config();
+
+// app config 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -16,7 +19,6 @@ app.use(cors({
    origin: "http://localhost:1999", // <-- location of the react app were connecting to
    credentials: true,
 }));
-require('dotenv').config()
 
 app.use(session({
    secret: "secretcode",
@@ -71,6 +73,16 @@ app.post('/login', (req,res,next) => {
          });
       }
    })(req, res, next);
+});
+
+// getting spending data for requested username
+app.post('/spending', (req,res) => {
+   Spending.find({username: req.body.username}, (err,doc) => {
+      if(err) throw err;
+      if(doc) {
+         res.send(doc);
+      }
+   });
 });
 
 // register user

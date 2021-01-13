@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cb2a005-4765-4f33-b84b-488465e10aab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Schemas/SpendingTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SpendingEntryModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SpendingTableEntries.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TestChart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schemas/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schemas/User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SpendingEntryModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SpendingEntryModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SpendingTableEntries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SpendingTableEntries.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +28,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1meplZ6gxOoN1Mo22pmplOwpLyp" />
   <component name="ProjectViewState">
@@ -78,7 +82,10 @@
       <workItem from="1610439447318" duration="5391000" />
       <workItem from="1610452319227" duration="4000" />
       <workItem from="1610466449401" duration="634000" />
-      <workItem from="1610468143714" duration="6089000" />
+      <workItem from="1610468143714" duration="6186000" />
+      <workItem from="1610537454222" duration="67000" />
+      <workItem from="1610538256547" duration="10322000" />
+      <workItem from="1610554425195" duration="3017000" />
     </task>
     <servers />
   </component>

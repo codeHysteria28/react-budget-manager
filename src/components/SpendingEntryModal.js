@@ -27,7 +27,6 @@ class ModalPage extends Component {
         });
 
         entry_obj.paid_at = moment(this.state.startDate).format('MMM Do YY');
-        console.log(entry_obj);
 
         if (entry_obj !== {}){
             axios.post('http://localhost:1998/add_spending', entry_obj).then((res) => {
@@ -58,7 +57,7 @@ class ModalPage extends Component {
     render() {
         return (
             <>
-                <MDBBtn onClick={this.toggle}>Modal</MDBBtn>
+                <MDBBtn onClick={this.toggle}>Add Entry</MDBBtn>
                 <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
                     <MDBModalHeader toggle={this.toggle}>Add Spending Entry</MDBModalHeader>
                     <form onSubmit={this.addEntry.bind(this)}>
