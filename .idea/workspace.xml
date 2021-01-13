@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cb2a005-4765-4f33-b84b-488465e10aab" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schemas/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/Schemas/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SpendingEntryModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SpendingEntryModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SpendingTableEntries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SpendingTableEntries.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +80,8 @@
       <workItem from="1610468143714" duration="6186000" />
       <workItem from="1610537454222" duration="67000" />
       <workItem from="1610538256547" duration="10322000" />
-      <workItem from="1610554425195" duration="3017000" />
+      <workItem from="1610554425195" duration="3215000" />
+      <workItem from="1610564213026" duration="36000" />
     </task>
     <servers />
   </component>
