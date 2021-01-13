@@ -12,8 +12,7 @@ const cookieParser = require("cookie-parser");
 require('dotenv').config();
 
 // app config 
-let distDir = __dirname + "/public/";
-app.use(express.static(distDir));
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors({
