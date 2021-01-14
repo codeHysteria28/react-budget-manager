@@ -12,7 +12,7 @@ const cookieParser = require("cookie-parser");
 require('dotenv').config();
 
 // app config 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 // if(process.env.NODE === 'production') {
 //    app.get('*', (req, res) => {
