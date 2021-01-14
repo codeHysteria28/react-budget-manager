@@ -66,6 +66,7 @@ app.post('/add_spending', (req,res) => {
 // login user
 app.post('/login', (req,res,next) => {
    passport.authenticate("local",(err,user,info) => {
+      console.log(user);
       if(err) throw err;
       if(!user) res.send("No user exists");
       else {
