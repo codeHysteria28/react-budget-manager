@@ -24,6 +24,7 @@ app.use(cors({
    origin: "http://localhost:1999", // <-- location of the react app were connecting to
    credentials: true,
 }));
+app.enable('trust proxy');
 
 app.use(session({
    secret: "secretcode",
