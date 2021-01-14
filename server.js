@@ -12,13 +12,15 @@ const cookieParser = require("cookie-parser");
 require('dotenv').config();
 
 // app config 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('*', (req, res) => {
-   res.sendFile(path.resolve(__dirname,'build', 'index.html'));
-});
+// if(process.env.NODE === 'production') {
+//    app.get('*', (req, res) => {
+//       res.sendFile(path.resolve(__dirname,'build', 'index.html'));
+//    });
+// }
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors({
    origin: "http://localhost:1999", // <-- location of the react app were connecting to
@@ -44,10 +46,6 @@ db.on('error', console.error.bind(console, "mongo conn err"));
 
 db.on('connected', () => {
    console.log('connected to mongodb');
-});
-
-app.get('/', (req,res) => {
-   res.sendFile(path.join(__dirname,'public','index.html'));
 });
 
 app.post('/add_spending', (req,res) => {
