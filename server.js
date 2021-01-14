@@ -14,11 +14,9 @@ require('dotenv').config();
 // app config 
 app.use(express.static(path.join(__dirname, 'build')));
 
-// if(process.env.NODE === 'production') {
-//    app.get('*', (req, res) => {
-//       res.sendFile(path.resolve(__dirname,'build', 'index.html'));
-//    });
-// }
+app.get('/*', (req, res) => {
+   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -139,7 +137,4 @@ app.get('/ping', (req,res) => {
    return res.send('pong');
 });
 
-let port = process.env.PORT || 1998;
-let host = '0.0.0.0';
-
-app.listen(port,host, () => console.log("Running on port " + port));
+app.listen(process.env.PORT || 1998, () => console.log("Running on port " +process.env.PORT || 1998));
