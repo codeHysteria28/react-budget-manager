@@ -1,0 +1,21 @@
+.dataTables_paginate {
+    display: none !important;
+}
+
+.statisticRow {
+    margin-top: 25px;
+    display: flex;
+}
+
+.icon {
+    font-size: 30px;
+    margin-right: 25px;
+}
+
+.heading {
+    margin-right: 25px;
+}
+
+.statisticRow p {
+    font-size: 30px;
+}

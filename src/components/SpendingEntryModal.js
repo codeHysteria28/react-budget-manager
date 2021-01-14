@@ -18,6 +18,10 @@ class ModalPage extends Component {
         });
     }
 
+    handleChange = () => {
+        this.props.entryAdded();
+    }
+
     addEntry = (e) => {
         e.preventDefault();
         const entry_data = new FormData(e.target);
@@ -31,6 +35,7 @@ class ModalPage extends Component {
         if (entry_obj !== {}){
             axios.post('/add_spending', entry_obj).then((res) => {
                 if(res.data === "Spending added successfully") {
+                    this.handleChange();
                     Swal.fire({
                         icon: 'success',
                         title: 'Spending added successfully',
