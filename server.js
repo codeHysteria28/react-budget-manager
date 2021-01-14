@@ -11,12 +11,10 @@ const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 require('dotenv').config();
 
-// app config 
-app.use(express.static(path.join(__dirname, 'build')));
+// app config
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/*', (req, res) => {
-   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -45,6 +43,10 @@ db.on('error', console.error.bind(console, "mongo conn err"));
 
 db.on('connected', () => {
    console.log('connected to mongodb');
+});
+
+app.get('/*', (req, res) => {
+   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.post('/add_spending', (req,res) => {
