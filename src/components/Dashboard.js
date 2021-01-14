@@ -18,7 +18,7 @@ class Dashboard extends React.Component  {
     logout = () => {
         axios({
             method: "post",
-            url: "http://localhost:1998/logout",
+            url: "/logout",
             withCredentials: true,
         }).then((res) => {
             window.location = '/login';
@@ -29,7 +29,7 @@ class Dashboard extends React.Component  {
         axios({
             method: "GET",
             withCredentials: true,
-            url: "http://localhost:1998/user",
+            url: "/user",
         }).then((res) => {
             if(res.data !== ""){
                 this.setState({data: res.data});

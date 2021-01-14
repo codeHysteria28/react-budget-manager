@@ -43,7 +43,7 @@ class Signup extends  React.Component {
             if(this.state.usernameErr !== "" || this.state.passErr !== "" || this.state.conf_password !== "") {
                 return false;
             }else {
-                axios.post('http://localhost:1998/register', user_obj).then((res) => {
+                axios.post('/register', user_obj).then((res) => {
                     if(res.data === "success") {
                         Swal.fire({
                             icon: 'success',

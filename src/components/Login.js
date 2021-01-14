@@ -17,7 +17,7 @@ const Login = () => {
                 password:loginPassword
             },
             withCredentials: true,
-            url: "http://localhost:1998/login",
+            url: "/login",
         }).then((res) => {
             if(res.data === "No user exists"){
                 Swal.fire({
