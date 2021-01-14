@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //    });
 // }
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors({
    origin: "http://localhost:1999", // <-- location of the react app were connecting to
