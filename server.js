@@ -139,4 +139,7 @@ app.get('/ping', (req,res) => {
    return res.send('pong');
 });
 
-app.listen(process.env.PORT || 1998, () => console.log("Running on port " + process.env.PORT || 1998));
+let port = process.env.PORT || 1998;
+let host = '0.0.0.0';
+
+app.listen(port,host, () => console.log("Running on port " + port));
