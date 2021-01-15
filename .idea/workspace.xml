@@ -2,45 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cb2a005-4765-4f33-b84b-488465e10aab" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/2.dae00936.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/2.dae00936.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.d3d09431.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.d3d09431.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.d49a32d0.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.d49a32d0.chunk.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.d49a32d0.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.f4a0f7c0.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.f4a0f7c0.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/runtime-main.d258a1dd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/runtime-main.d258a1dd.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/arrow_left.2b063d13.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/arrow_right.0897f985.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-brands-400.0fea2496.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-brands-400.c967a94c.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-brands-400.dc2cbadd.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-brands-400.e33e2cf6.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-brands-400.ec82f282.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-regular-400.06b9d19c.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-regular-400.08f9891a.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-regular-400.1008b522.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-regular-400.1069ea55.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-regular-400.1495f578.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-solid-900.10ecefc2.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-solid-900.371dbce0.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-solid-900.3a24a60e.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-solid-900.3ceb50e7.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/fa-solid-900.46fdbd2d.woff" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +85,7 @@
       <workItem from="1610616907466" duration="17862000" />
       <workItem from="1610638529808" duration="1878000" />
       <workItem from="1610640671821" duration="3000" />
-      <workItem from="1610697263375" duration="473000" />
+      <workItem from="1610697263375" duration="814000" />
     </task>
     <servers />
   </component>
