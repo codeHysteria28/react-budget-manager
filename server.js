@@ -14,7 +14,13 @@ require('dotenv').config();
 // app config
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use(express.static(path.join(__dirname, 'public')));
+if(process.env.NODE_ENV === 'production'){
+   app.use(express.static(path.join(__dirname, 'build')));
+
+   app.get('/*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'build', 'index.html'));
+   });
+}
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -45,10 +51,6 @@ db.on('connected', () => {
    console.log('connected to mongodb');
 });
 
-app.get('/*', (req, res) => {
-   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
 app.post('/add_spending', (req,res) => {
    if(req.body !== {}){
       const spending = new Spending({
@@ -67,7 +69,11 @@ app.post('/add_spending', (req,res) => {
 
 // login user
 app.post('/login', (req,res,next) => {
-   passport.authenticate("local",(err,user,info) => {
+   passport.authenticate("local",{
+      successRedirect: '/dashboard',
+      failureRedirect: '/login',
+      failureFlash: true
+   },(err,user,info) => {
       console.log(user);
       if(err) throw err;
       if(!user) res.send("No user exists");
@@ -123,6 +129,7 @@ app.post('/register', (req,res) => {
 });
 
 app.get("/user", (req, res) => {
+   console.log(req.user);
    res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
 });
 
