@@ -16,21 +16,25 @@ require('dotenv').config();
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 app.use(cors({
    origin: "http://localhost:1999", // <-- location of the react app were connecting to
    credentials: true,
 }));
+
 app.enable('trust proxy');
 
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(session({
    secret: "secretcode",
    resave: false,
-   saveUninitialized: false,
+   saveUninitialized: true,
+   httpOnly: true,  // dont let browser javascript access cookie ever
+   secure: true, // only use cookie over https
+   ephemeral: true
 }));
 
-app.use(cookieParser('secretcode'));
 app.use(passport.initialize());
 app.use(passport.session());
 require("./passportConfig")(passport);
