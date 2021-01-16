@@ -31,7 +31,8 @@ class Dashboard extends React.Component  {
             withCredentials: true,
             url: "/user",
         }).then((res) => {
-            if(res.data !== ""){
+            console.log(res.data);
+            if(res.data !== {}){
                 this.setState({data: res.data});
                 this.setState({auth: true});
             }else {

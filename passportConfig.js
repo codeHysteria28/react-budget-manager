@@ -21,12 +21,10 @@ module.exports = function (passport) {
     );
 
     passport.serializeUser((user, done) => {
-        console.log(user);
         done(null, user._id);
     });
 
     passport.deserializeUser((_id, done) => {
-        console.log(_id);
         User.findOne({ _id: _id }, (err, user) => {
             const userInformation = {
                 username: user.username,
