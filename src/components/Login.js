@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {MDBBtn, MDBCol, MDBContainer, MDBRow} from "mdbreact";
 import axios from "axios";
 import Swal from 'sweetalert2';
+import Cookies from 'universal-cookie';
 
 const Login = () => {
     const [loginUsername, setLoginUsername] = useState("");
@@ -22,10 +23,12 @@ const Login = () => {
             if(res.data === "No user exists"){
                 Swal.fire({
                     icon: 'error',
-                    title: 'Something went wrong with registration, please try again.',
+                    title: 'Something went wrong with logging in, please try again.',
                     text: `${res.data}`
                 });
             }else {
+                const cookie = new Cookies();
+                cookie.set('token',res.data, { path: '/' });
                 window.location = '/dashboard';
             }
         });

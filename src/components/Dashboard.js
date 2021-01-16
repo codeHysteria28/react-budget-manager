@@ -2,8 +2,9 @@ import React from "react";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import Header from "./Header";
-// import Example from "./TestChart";
 import SpendingTableEntries from "./SpendingTableEntries";
+import jwt_decode from "jwt-decode";
+import Cookies from 'universal-cookie';
 
 class Dashboard extends React.Component  {
     constructor(props) {
@@ -11,8 +12,11 @@ class Dashboard extends React.Component  {
 
         this.state = {
             data: null,
-            auth: false
+            auth: false,
+            username: null
         }
+
+        this.cookies = new Cookies()
     }
 
     logout = () => {
@@ -21,32 +25,28 @@ class Dashboard extends React.Component  {
             url: "/logout",
             withCredentials: true,
         }).then((res) => {
+            this.cookies.remove('token');
             window.location = '/login';
         });
     }
 
     getUser = () => {
-        axios({
-            method: "GET",
-            withCredentials: true,
-            url: "/user",
-        }).then((res) => {
-            console.log(res.data);
-            if(res.data !== {}){
-                this.setState({data: res.data});
-                this.setState({auth: true});
-            }else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error with authentication, please try again later.'
-                });
+        const token = this.cookies.get('token');
+        if(!token) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error with authentication, please try again later.'
+            });
 
-                setTimeout(() => {
-                    this.logout();
-                }, 2000);
-            }
-        });
-    };
+            setTimeout(() => {
+                this.logout();
+            }, 2000);
+        }else {
+            const dekode_jwt = jwt_decode(token);
+            this.setState({username: dekode_jwt.username});
+            this.setState({auth: true});
+        }
+    }
 
     componentDidMount() {
         this.getUser();
@@ -58,8 +58,8 @@ class Dashboard extends React.Component  {
                 {this.state.auth
                     ?
                     <div>
-                        <Header user={this.state.data.username} logout={this.logout}/>
-                        <SpendingTableEntries user={this.state.data.username}/>
+                        <Header user={this.state.username} logout={this.logout}/>
+                        <SpendingTableEntries user={this.state.username}/>
                     </div>
                     : ""
                 }

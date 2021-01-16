@@ -9,6 +9,7 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 // app config
@@ -22,26 +23,18 @@ app.use(cors({
 
 app.enable('trust proxy');
 
-app.use(cookieParser("secretcode"));
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({
    secret: "secretcode",
    resave: false,
-   saveUninitialized: false,
-   cookie: {
-      httpOnly: false
-  }
+   saveUninitialized: false
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 require("./passportConfig")(passport);
-
-app.use((req,res,next) => {
-   console.log(req.user);
-   next();
-});
 
 // Schemas
 const User = require('./Schemas/User');
@@ -79,21 +72,29 @@ app.post('/add_spending', (req,res) => {
 });
 
 // login user
-app.post('/login', (req,res,next) => {
-   passport.authenticate("local",{
-      successRedirect: '/dashboard',
-      failureRedirect: '/login',
-      failureFlash: true
-   },(err,user,info) => {
-      if(err) throw err;
-      if(!user) res.send("No user exists");
-      else {
-         req.logIn(user, (err) => {
-            if(err) throw err;
-            res.send("Successfully Authenticated");
-         });
-      }
-   })(req, res, next);
+app.post('/login', (req,res) => {
+   if(req.body !== {}){
+      // get username and password from request body
+      const username = req.body.username;
+      const password = req.body.password;
+
+      User.findOne({ username: username }, (err, user) => {
+         if (err) throw err;
+         if (!user){
+            res.send("No user exists");
+         }else {
+            bcrypt.compare(password, user.password, (err, result) => {
+               if (err) throw err;
+               if (result === true) {
+                  const token = jwt.sign({username: user.username}, process.env.TOKEN_SECRET);
+                  res.header('auth-token',token).send(token);
+               } else {
+                  console.log('error');
+               }
+            });
+         }
+     });
+   }
 });
 
 // getting spending data for requested username
@@ -138,12 +139,18 @@ app.post('/register', (req,res) => {
    }
 });
 
-app.get("/user", (req, res) => {
-   // The req.user stores the entire user that has been authenticated inside of it.
-   if(req.user){
-      res.json(req.user);
-   }
-});
+// app.get("/user", (req, res) => {
+//    const token = req.header('auth-token');
+//    console.log(token);
+//    if(!token) return res.status(401).send('Access Denied');
+
+//    try{
+//       const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+//       req.user = verified;
+//    }catch(err){
+//       res.status(400).send('Invalid Token');
+//    }
+// });
 
 // logging out user
 app.post('/logout', (req,res) => {
