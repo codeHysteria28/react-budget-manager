@@ -14,7 +14,7 @@ const Login = () => {
             method: "POST",
             data: {
                 username: loginUsername,
-                password:loginPassword
+                password: loginPassword
             },
             withCredentials: true,
             url: "/login",

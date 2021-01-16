@@ -79,7 +79,6 @@ app.post('/login', (req,res,next) => {
       failureRedirect: '/login',
       failureFlash: true
    },(err,user,info) => {
-      console.log(user);
       if(err) throw err;
       if(!user) res.send("No user exists");
       else {
@@ -134,7 +133,6 @@ app.post('/register', (req,res) => {
 });
 
 app.get("/user", (req, res) => {
-   console.log(req.user);
    return res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
 });
 
