@@ -22,7 +22,7 @@ app.use(cors({
 
 app.enable('trust proxy');
 
-app.use(cookieParser());
+app.use(cookieParser("secretcode"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({
@@ -54,9 +54,9 @@ db.on('connected', () => {
 });
 
 if (process.env.NODE_ENV === "production") {
-   app.use(express.static(path.join(__dirname, "build")));
+   app.use(express.static(path.join(__dirname)));
    app.get("*", (request, response) => {
-     response.sendFile(path.join(__dirname, "build", "index.html"));
+     response.sendFile(path.join(__dirname, "index.html"));
    });
  }else {
    app.use(express.static(path.join(__dirname, 'public')));
