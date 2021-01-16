@@ -14,8 +14,6 @@ require('dotenv').config();
 // app config
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.static(path.join(__dirname, 'build')));
-
 app.use(cors({
    origin: "http://localhost:1999", // <-- location of the react app were connecting to
    credentials: true,
@@ -49,9 +47,14 @@ db.on('connected', () => {
    console.log('connected to mongodb');
 });
 
-app.get('/*', (req, res) => {
-   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+if (process.env.NODE_ENV === "production") {
+   app.use(express.static(path.join(__dirname, "client/build")));
+   app.get("*", (request, response) => {
+     response.sendFile(path.join(__dirname, "client/build", "index.html"));
+   });
+ }else {
+   app.use(express.static(path.join(__dirname, 'public')));
+ }
 
 app.post('/add_spending', (req,res) => {
    if(req.body !== {}){
@@ -132,7 +135,7 @@ app.post('/register', (req,res) => {
 
 app.get("/user", (req, res) => {
    console.log(req.user);
-   res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+   return res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
 });
 
 // logging out user
