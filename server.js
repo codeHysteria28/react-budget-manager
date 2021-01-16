@@ -27,10 +27,10 @@ app.use(bodyParser.json());
 app.use(session({
    secret: "secretcode",
    resave: false,
-   saveUninitialized: true,
-   httpOnly: true,  // dont let browser javascript access cookie ever
-   secure: true, // only use cookie over https
-   ephemeral: true
+   saveUninitialized: false,
+   cookie: {
+      httpOnly: false
+  }
 }));
 
 app.use(passport.initialize());
@@ -133,17 +133,17 @@ app.post('/register', (req,res) => {
 });
 
 app.get("/user", (req, res) => {
-   return res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+   res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
 });
 
 // logging out user
 app.post('/logout', (req,res) => {
-   req.logout();
    req.session.destroy((err) => {
+      if(err) throw err;
       res.clearCookie('connect.sid',{path:'/'});
       res.send('logout');
+      req.logout();
    });
-   req.logout();
 });
 
 // backend functionality test
