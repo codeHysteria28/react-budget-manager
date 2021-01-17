@@ -7,8 +7,10 @@ const Statistics = (props) => {
         <MDBContainer>
             <div className="statisticRow">
                 <h1 className="heading">Spend Total: </h1>
-                <MDBIcon icon="cash-register" className="icon"/>
-                <p>€ {props.totalAmount}</p>
+                <div className="spender">
+                    <MDBIcon icon="cash-register" className="icon"/>
+                    <p>€ {props.totalAmount}</p>
+                </div>
             </div>
         </MDBContainer>
     );

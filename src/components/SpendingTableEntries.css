@@ -4,18 +4,24 @@
 
 .statisticRow {
     margin-top: 25px;
-    display: flex;
+    /* display: flex; */
 }
 
 .icon {
     font-size: 30px;
     margin-right: 25px;
+    margin-top: 5px;
 }
 
 .heading {
     margin-right: 25px;
+    font-size: 32px !important;
 }
 
 .statisticRow p {
     font-size: 30px;
+}
+
+.spender {
+    display: flex;
 }
