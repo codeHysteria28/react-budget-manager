@@ -10,10 +10,12 @@ const passport = require("passport");
 const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const jwt = require('jsonwebtoken');
+const helmet = require('helmet');
+const rateLimit = require("express-rate-limit");
 require('dotenv').config();
 
-// app config
-// app.use(express.static(path.join(__dirname, 'public')));
+
+// server config
 
 app.use(cors({
    origin: "http://localhost:1999", // <-- location of the react app were connecting to
@@ -32,8 +34,19 @@ app.use(session({
    saveUninitialized: false
 }));
 
+
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(helmet());
+
+const limiter = rateLimit({
+   windowMs: 15 * 60 * 1000, // 15 minutes
+   max: 100 // limit each IP to 100 request per windowMs
+});
+
+app.use(limiter);
+
 require("./passportConfig")(passport);
 
 // Schemas
@@ -55,6 +68,7 @@ if (process.env.NODE_ENV === "production") {
    app.use(express.static(path.join(__dirname, 'public')));
  }
 
+// adding spending entry into table spending
 app.post('/add_spending', (req,res) => {
    if(req.body !== {}){
       const spending = new Spending({
@@ -86,6 +100,7 @@ app.post('/login', (req,res) => {
             bcrypt.compare(password, user.password, (err, result) => {
                if (err) throw err;
                if (result === true) {
+                  // setting JWT token for later use
                   const token = jwt.sign({username: user.username}, process.env.TOKEN_SECRET);
                   res.header('auth-token',token).send(token);
                } else {
@@ -139,19 +154,6 @@ app.post('/register', (req,res) => {
    }
 });
 
-// app.get("/user", (req, res) => {
-//    const token = req.header('auth-token');
-//    console.log(token);
-//    if(!token) return res.status(401).send('Access Denied');
-
-//    try{
-//       const verified = jwt.verify(token, process.env.TOKEN_SECRET);
-//       req.user = verified;
-//    }catch(err){
-//       res.status(400).send('Invalid Token');
-//    }
-// });
-
 // logging out user
 app.post('/logout', (req,res) => {
    req.session.destroy((err) => {
@@ -167,4 +169,4 @@ app.get('/ping', (req,res) => {
    return res.send('pong');
 });
 
-app.listen(process.env.PORT || 1998, () => console.log("Running on port " +process.env.PORT || 1998));
+app.listen(process.env.PORT || 1998, () => console.log("Running on port " + process.env.PORT || 1998));
