@@ -40,7 +40,11 @@ app.use(passport.session());
 
 app.use(helmet.contentSecurityPolicy({
    directives: {
-      defaultSrc: ['self'],
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'","'unsafe-inline'"],
+      imgSrc: ["'self'"],
+      manifestSrc: ["'self'","'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
       fontSrc:["'self'",'fonts.gstatic.com']
    }
 }));
