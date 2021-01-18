@@ -44,17 +44,23 @@ if (process.env.NODE_ENV === "production") {
      response.sendFile(path.join(__dirname, "build", "index.html"));
    });
 
-   app.use(helmet.contentSecurityPolicy({
+   app.use((req, res, next) => {
+      res.locals.nonce = crypto.randomBytes(16).toString("hex");
+      next();
+    });
+   
+   app.use((req,res,next) => {
+      helmet.contentSecurityPolicy({
          directives: {
             defaultSrc: ["'self'"],
-            scriptSrc: ["'self'", 'unsafe-inline'],
+            scriptSrc: ["'self'", `'nonce-${res.locals.nonce}'`],
             imgSrc: ["'self'"],
             manifestSrc: ["'self'"],
             styleSrc: ["'self'",'fonts.googleapis.com'],
             fontSrc:["'self'",'fonts.gstatic.com']
          }
-      })
-   );
+      })(req,res,next);
+   });
    
    const limiter = rateLimit({
       windowMs: 15 * 60 * 1000, // 15 minutes
