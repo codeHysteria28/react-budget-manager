@@ -38,7 +38,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+   directives: {
+      defaultSrc: ['self'],
+      fontSrc:["'self'",'fonts.gstatic.com']
+   }
+}));
 
 const limiter = rateLimit({
    windowMs: 15 * 60 * 1000, // 15 minutes
