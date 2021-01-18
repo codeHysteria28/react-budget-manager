@@ -9,7 +9,21 @@ import Swal from "sweetalert2";
 class ModalPage extends Component {
     state = {
         modal: false,
-        startDate: new Date()
+        startDate: new Date(),
+        options: [
+            {
+              text: "Option 1",
+              value: "1"
+            },
+            {
+              text: "Option 2",
+              value: "2"
+            },
+            {
+              text: "Option 3",
+              value: "3"
+            }
+          ]
     }
 
     toggle = () => {
@@ -72,14 +86,29 @@ class ModalPage extends Component {
                                     Item
                                 </label>
                                 <input type="text" id="item" name="item" className="form-control" />
+                                <br/>
+                                <label htmlFor="category" className="grey-text">
+                                    Item Category
+                                </label>
+                                <select name="category" id="category" className="browser-default custom-select">
+                                    <option value="-">Choose an option</option>
+                                    <option value="Groceries">Groceries</option>
+                                    <option value="Clothes">Clothes</option>
+                                    <option value="Electronics">Electronics</option>
+                                    <option value="Hobby">Hobby</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="App Payments">App payments eg. Spotify</option>
+                                </select>
+                                <br />
                                 <br />
                                 <label htmlFor="price" className="grey-text">
                                     Cost
                                 </label>
-                                <input type="number" name="price" id="price" className="form-control" />
+                                <input type="text" name="price" id="price" className="form-control" />
+                                <br />
                                 <label htmlFor="date" className="grey-text">
                                     Date
-                                </label><br/>
+                                </label><br />
                                 <input type="hidden" name="paid_at" value={this.state.startDate}/>
                                 <DatePicker selected={this.state.startDate} onChange={date => this.setState({startDate: date})} />
                         </MDBModalBody>

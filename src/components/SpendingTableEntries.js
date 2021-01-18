@@ -10,6 +10,8 @@ const TablePage = (props) => {
     const [spending,setSpending] = useState(null);
     const [totalAmount, setTotalAmount] = useState(null);
     const [activeItem, setActiveItem] = useState("1");
+    const [mostExpItem, setMostExpItem] = useState(null);
+    const [mostExpItemName, setMostExpItemName] = useState("");
 
     const toggle = tab => {
         if (activeItem !== tab) {
@@ -30,6 +32,11 @@ const TablePage = (props) => {
                 sort: 'asc'
             },
             {
+                label: 'Item Category',
+                field: 'category',
+                sort: 'asc'
+            },
+            {
                 label: 'Cost',
                 field: 'price',
                 sort: 'asc'
@@ -41,7 +48,7 @@ const TablePage = (props) => {
             }
 
         ],
-        rows: spending
+        rows: spending || []
     }
 
     const getEntries = () => {
@@ -61,25 +68,44 @@ const TablePage = (props) => {
                     if(item._id.length > 10){
                         item._id = item._id.substring(0,10);
                     }
+
                     obj = {
                         _id: item._id,
                         item: item.item,
+                        category: item.category,
                         price: '€ ' + item.price,
                         paid_at: item.paid_at
                     }
-                    total_amount_arr.push(item.price);
+
+                    total_amount_arr.push(Number(item.price));
                     arr.push(obj);
                 });
 
-                let sum_total_amount = total_amount_arr.reduce((a,b) => {
-                    return a + b;
-                },0);
+                if(arr.length > 0){
+                    // most expensive item so far
+                    const most_exp_item = Math.max(...total_amount_arr);
+                        
+                    // get most expensive item name so far
+                    const getMostExpItemName = arr.filter(mostExpItemName => {
+                        return mostExpItemName.price === '€ ' + most_exp_item;
+                    });
 
-                setTimeout(() => {
-                    setTotalAmount(sum_total_amount);
-                },1000);
+                    // most expensive item name
+                    const mostExpItemName = getMostExpItemName[0].item;
 
-                setSpending([...arr]);
+                    // total amount spend
+                    let sum_total_amount = total_amount_arr.reduce((a,b) => {
+                        return a + b;
+                    },0);
+
+                    setTimeout(() => {
+                        setMostExpItem(most_exp_item.toFixed(2));
+                        setTotalAmount(sum_total_amount.toFixed(2));
+                        setMostExpItemName(mostExpItemName);
+                    },1000);
+
+                    setSpending([...arr]);
+                }
             }else {
                 Swal.fire({
                     icon: 'error',
@@ -92,7 +118,7 @@ const TablePage = (props) => {
     useEffect(()=> {
         getEntries();
     },[]);
-
+    
     return (
         <>
             <br/><br/>
@@ -105,6 +131,11 @@ const TablePage = (props) => {
                     </MDBNavItem>
                     <MDBNavItem>
                         <MDBNavLink link to="#" active={activeItem === "2"} onClick={() => toggle("2")} role="tab" >
+                            Income Breakdown
+                        </MDBNavLink>
+                    </MDBNavItem>
+                    <MDBNavItem>
+                        <MDBNavLink link to="#" active={activeItem === "3"} onClick={() => toggle("3")} role="tab" >
                             Statistics
                         </MDBNavLink>
                     </MDBNavItem>
@@ -119,7 +150,10 @@ const TablePage = (props) => {
                         <MDBDataTable responsive striped bordered small data={data} paging={true} sortable={false} info={true}/>
                     </MDBTabPane>
                     <MDBTabPane tabId="2" role="tabpanel">
-                        <Statistics totalAmount={totalAmount}/>
+                         
+                    </MDBTabPane>
+                    <MDBTabPane tabId="3" role="tabpanel">
+                        <Statistics totalAmount={totalAmount} mostExpItem={mostExpItem} mostExpItemName={mostExpItemName}/> 
                     </MDBTabPane>
                 </MDBTabContent>
             </MDBContainer>

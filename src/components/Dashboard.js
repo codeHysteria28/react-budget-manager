@@ -13,7 +13,8 @@ class Dashboard extends React.Component  {
         this.state = {
             data: null,
             auth: false,
-            username: null
+            username: null,
+            user_id: null
         }
 
         this.cookies = new Cookies()
@@ -44,6 +45,7 @@ class Dashboard extends React.Component  {
         }else {
             const dekode_jwt = jwt_decode(token);
             this.setState({username: dekode_jwt.username});
+            this.setState({user_id: dekode_jwt._id});
             this.setState({auth: true});
         }
     }

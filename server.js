@@ -91,6 +91,7 @@ app.post('/add_spending', (req,res) => {
       const spending = new Spending({
          username: req.body.username,
          item: req.body.item,
+         category: req.body.category,
          price: req.body.price,
          paid_at: req.body.paid_at
       });
@@ -118,7 +119,7 @@ app.post('/login', (req,res) => {
                if (err) throw err;
                if (result === true) {
                   // setting JWT token for later use
-                  const token = jwt.sign({username: user.username}, process.env.TOKEN_SECRET);
+                  const token = jwt.sign({_id: user._id,username: user.username}, process.env.TOKEN_SECRET);
                   res.header('auth-token',token).send(token);
                } else {
                   res.send("Wrong password");
