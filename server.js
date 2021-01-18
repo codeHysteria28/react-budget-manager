@@ -12,6 +12,7 @@ const cookieParser = require("cookie-parser");
 const jwt = require('jsonwebtoken');
 const helmet = require('helmet');
 const rateLimit = require("express-rate-limit");
+const crypto = require('crypto');
 require('dotenv').config();
 
 
@@ -41,10 +42,10 @@ app.use(passport.session());
 app.use(helmet.contentSecurityPolicy({
    directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'","'unsafe-inline'"],
+      scriptSrc: ["'self'"],
       imgSrc: ["'self'"],
-      manifestSrc: ["'self'","'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
+      manifestSrc: ["'self'"],
+      styleSrc: ["'self'",'fonts.googleapis.com'],
       fontSrc:["'self'",'fonts.gstatic.com']
    }
 }));
