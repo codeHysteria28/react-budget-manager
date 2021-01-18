@@ -39,10 +39,15 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req, res, next) => {
+   res.locals.nonce = crypto.randomBytes(16).toString("hex");
+   next();
+ });
+
 app.use(helmet.contentSecurityPolicy({
    directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'"],
+      scriptSrc: ["'self'", `'nonce-${res.locals.nonce}'`],
       imgSrc: ["'self'"],
       manifestSrc: ["'self'"],
       styleSrc: ["'self'",'fonts.googleapis.com'],
