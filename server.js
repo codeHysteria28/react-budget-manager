@@ -17,7 +17,6 @@ require('dotenv').config();
 
 
 // server config
-
 app.use(cors({
    origin: "http://localhost:1999", // <-- location of the react app were connecting to
    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -39,28 +38,40 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next) => {
-   res.locals.nonce = crypto.randomBytes(16).toString("hex");
-   next();
- });
+if (process.env.NODE_ENV === "production") {
+   app.use(express.static(path.join(__dirname, "build")));
+   app.get("*", (request, response) => {
+     response.sendFile(path.join(__dirname, "build", "index.html"));
+   });
 
-app.use(helmet.contentSecurityPolicy({
-   directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", `'nonce-${res.locals.nonce}'`],
-      imgSrc: ["'self'"],
-      manifestSrc: ["'self'"],
-      styleSrc: ["'self'",'fonts.googleapis.com'],
-      fontSrc:["'self'",'fonts.gstatic.com']
-   }
-}));
+   app.use((req, res, next) => {
+      res.locals.nonce = crypto.randomBytes(16).toString("hex");
+      next();
+    });
+   
+   app.use((req,res,next) => {
+      helmet.contentSecurityPolicy({
+         directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", `'nonce-${res.locals.nonce}'`],
+            imgSrc: ["'self'"],
+            manifestSrc: ["'self'"],
+            styleSrc: ["'self'",'fonts.googleapis.com'],
+            fontSrc:["'self'",'fonts.gstatic.com']
+         }
+      })(req,res,next);
+   });
+   
+   const limiter = rateLimit({
+      windowMs: 15 * 60 * 1000, // 15 minutes
+      max: 100 // limit each IP to 100 request per windowMs
+   });
+   
+   app.use(limiter);
 
-const limiter = rateLimit({
-   windowMs: 15 * 60 * 1000, // 15 minutes
-   max: 100 // limit each IP to 100 request per windowMs
-});
-
-app.use(limiter);
+ }else {
+   app.use(express.static(path.join(__dirname, 'public')));
+ }
 
 require("./passportConfig")(passport);
 
@@ -73,15 +84,6 @@ db.on('error', console.error.bind(console, "mongo conn err"));
 db.on('connected', () => {
    console.log('connected to mongodb');
 });
-
-if (process.env.NODE_ENV === "production") {
-   app.use(express.static(path.join(__dirname, "build")));
-   app.get("*", (request, response) => {
-     response.sendFile(path.join(__dirname, "build", "index.html"));
-   });
- }else {
-   app.use(express.static(path.join(__dirname, 'public')));
- }
 
 // adding spending entry into table spending
 app.post('/add_spending', (req,res) => {
