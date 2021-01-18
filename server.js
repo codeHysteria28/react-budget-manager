@@ -109,7 +109,7 @@ app.post('/login', (req,res) => {
                   const token = jwt.sign({username: user.username}, process.env.TOKEN_SECRET);
                   res.header('auth-token',token).send(token);
                } else {
-                  console.log('error');
+                  res.send("Wrong password");
                }
             });
          }

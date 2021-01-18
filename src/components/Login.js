@@ -20,7 +20,7 @@ const Login = () => {
             withCredentials: true,
             url: "/login",
         }).then((res) => {
-            if(res.data === "No user exists"){
+            if(res.data === "No user exists" || res.data === "Wrong password"){
                 Swal.fire({
                     icon: 'error',
                     title: 'Something went wrong with logging in, please try again.',
