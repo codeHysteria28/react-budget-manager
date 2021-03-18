@@ -156,6 +156,11 @@ app.post('/register', (req,res) => {
                const user = new User({
                   username: req.body.username,
                   password: password,
+                  monthlyBudget: req.body.budget,
+                  fullName: req.body.fullName,
+                  email: req.body.email,
+                  phone: req.body.phone,
+                  address: req.body.address,
                   conf_password: conf_password,
                   created_at: req.body.created_at
                });
@@ -169,6 +174,30 @@ app.post('/register', (req,res) => {
       });
    }else {
       res.send('error');
+   }
+});
+
+// get user profile
+app.post('/getProfile', (req,res) => {
+   if(req.body !== {}){
+      try {
+         User.findOne({username: req.body.user}, (err,doc) => {
+            if(err) throw err;
+            if(!doc) res.send('User Profile not found');
+            if(doc) {
+               const new_doc = {
+                  fullName: doc.fullName,
+                  email: doc.email,
+                  phone: doc.phone,
+                  address: doc.address,
+                  created_at: doc.created_at
+               }
+               res.send(new_doc);
+            }
+         });
+      } catch (error) {
+         console.log(error);
+      }
    }
 });
 

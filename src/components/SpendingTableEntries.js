@@ -22,11 +22,6 @@ const TablePage = (props) => {
     const data = {
         columns: [
             {
-                label: '_id',
-                field: '_id',
-                sort: 'asc'
-            },
-            {
                 label: 'Item',
                 field: 'item',
                 sort: 'asc'
@@ -65,12 +60,8 @@ const TablePage = (props) => {
                 let obj = {};
                 let total_amount_arr = [];
                 res.data.forEach(item => {
-                    if(item._id.length > 10){
-                        item._id = item._id.substring(0,10);
-                    }
 
                     obj = {
-                        _id: item._id,
                         item: item.item,
                         category: item.category,
                         price: '€ ' + item.price,
@@ -142,8 +133,9 @@ const TablePage = (props) => {
                 </MDBNav>
                 <MDBTabContent activeItem={activeItem} >
                     <MDBTabPane tabId="1" role="tabpanel">
+                        <br/>
                         <div>
-                            <h1 style={{marginRight: 15, marginTop: 25}}>Spending Breakdown</h1>
+                            {/* <h1 style={{marginRight: 15, marginTop: 25}}>Spending Breakdown</h1> */}
                             <SpendingEntryModal user={props.user} entryAdded={getEntries}/>
                         </div>
                         <br/>

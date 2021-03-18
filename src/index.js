@@ -7,12 +7,14 @@ import Signup from "./components/signUp/Signup";
 import { BrowserRouter, Route,Switch} from 'react-router-dom';
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
+import UserProfile from './components/UserProfile';
 
 render((
         <BrowserRouter>
             <Switch>
                 <Route exact={true} path="/" component={Signup} />
                 <Route exact={true} path="/dashboard" component={Dashboard} />
+                <Route exact={true} path="/profile" component={UserProfile}/>
                 <Route exact={true} path="/login" component={Login} />
             </Switch>
         </BrowserRouter>

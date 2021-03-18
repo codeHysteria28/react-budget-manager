@@ -96,7 +96,8 @@ class ModalPage extends Component {
                                     <option value="Clothes">Clothes</option>
                                     <option value="Electronics">Electronics</option>
                                     <option value="Hobby">Hobby</option>
-                                    <option value="Travel">Travel</option>
+                                    <option value="Travel">Travel (bus, train, car, airplane)</option>
+                                    <option value="Gift">Gifts</option>
                                     <option value="App Payments">App payments eg. Spotify</option>
                                 </select>
                                 <br />
