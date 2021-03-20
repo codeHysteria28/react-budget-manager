@@ -37,7 +37,7 @@ const Login = () => {
             }else {
                 const cookie = new Cookies();
                 cookie.set('token',res.data, { path: '/' });
-                window.location = '/dashboard';
+                window.location = url_serv + '/dashboard';
             }
         });
     }

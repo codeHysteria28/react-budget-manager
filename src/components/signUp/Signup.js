@@ -59,7 +59,7 @@ class Signup extends  React.Component {
                             text: 'Now, you will be redirected to login page.',
                             confirmButtonText: `Continue`,
                         }).then((result) => {
-                            window.location = '/login';
+                            window.location = url_serv + '/login';
                         });
                     }else {
                         Swal.fire({
@@ -80,7 +80,14 @@ class Signup extends  React.Component {
     }
 
     login_screen = () => {
-        window.location = '/login';
+        let url_serv;
+        if(local_url === "http://localhost:3000"){
+            url_serv = local_url;
+        }else {
+            url_serv = url; 
+        }
+
+        window.location = url_serv + '/login';
     }
 
     render() {
