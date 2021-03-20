@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBIcon } from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
 import './Header.css';
-import {url, local_url} from '../api';
+import {url, local_url} from './api';
 class Header extends Component {
     state = {
         isOpen: false
