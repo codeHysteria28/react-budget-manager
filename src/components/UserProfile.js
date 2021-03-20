@@ -6,6 +6,7 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 import {MDBContainer, MDBBtn, MDBRow, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 import userPlaceholder from '../images/user.png';
+import {url, local_url} from './api';
 
 class UserProfile extends React.Component{
     constructor(props) {
@@ -23,9 +24,17 @@ class UserProfile extends React.Component{
     }
 
     userProfile = username => {
+
+        let url_serv;
+        if(local_url === "http://localhost:3000"){
+            url_serv = local_url;
+        }else {
+            url_serv = url; 
+        }
+
         axios({
             method: "post",
-            url: "/getProfile",
+            url: url_serv + "/getProfile",
             withCredentials: true,
             data: {user: username}
         }).then((res) => {
@@ -34,9 +43,17 @@ class UserProfile extends React.Component{
     }
 
     logout = () => {
+
+        let url_serv;
+        if(local_url === "http://localhost:3000"){
+            url_serv = local_url;
+        }else {
+            url_serv = url; 
+        }
+
         axios({
             method: "post",
-            url: "/logout",
+            url: url_serv + "/logout",
             withCredentials: true,
         }).then((res) => {
             this.cookies.remove('token');

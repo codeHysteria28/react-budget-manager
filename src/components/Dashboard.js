@@ -5,6 +5,7 @@ import Header from "./Header";
 import SpendingTableEntries from "./SpendingTableEntries";
 import jwt_decode from "jwt-decode";
 import Cookies from 'universal-cookie';
+import {url, local_url} from './api';
 
 class Dashboard extends React.Component  {
     constructor(props) {
@@ -21,9 +22,16 @@ class Dashboard extends React.Component  {
     }
 
     logout = () => {
+        let url_serv;
+        if(local_url === "http://localhost:3000"){
+            url_serv = local_url;
+        }else {
+            url_serv = url; 
+        }
+
         axios({
             method: "post",
-            url: "/logout",
+            url: url_serv + "/logout",
             withCredentials: true,
         }).then((res) => {
             this.cookies.remove('token');

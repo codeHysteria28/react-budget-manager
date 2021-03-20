@@ -3,6 +3,7 @@ import {MDBBtn, MDBCol, MDBContainer, MDBRow} from "mdbreact";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import Cookies from 'universal-cookie';
+import {url, local_url} from './api';
 
 const Login = () => {
     const [loginUsername, setLoginUsername] = useState("");
@@ -11,6 +12,13 @@ const Login = () => {
     const login = (e) => {
         e.preventDefault();
 
+        let url_serv;
+        if(local_url === "http://localhost:3000"){
+            url_serv = local_url;
+        }else {
+            url_serv = url; 
+        }
+
         axios({
             method: "POST",
             data: {
@@ -18,7 +26,7 @@ const Login = () => {
                 password: loginPassword
             },
             withCredentials: true,
-            url: "/login",
+            url: url_serv + "/login",
         }).then((res) => {
             if(res.data === "No user exists" || res.data === "Wrong password"){
                 Swal.fire({

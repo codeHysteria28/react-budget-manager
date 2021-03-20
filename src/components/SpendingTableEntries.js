@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import './SpendingTableEntries.css';
 import Statistics from "./Statistics";
+import {url, local_url} from './api';
 
 const TablePage = (props) => {
     const [spending,setSpending] = useState(null);
@@ -47,13 +48,21 @@ const TablePage = (props) => {
     }
 
     const getEntries = () => {
+
+        let url_serv;
+        if(local_url === "http://localhost:3000"){
+            url_serv = local_url;
+        }else {
+            url_serv = url; 
+        }
+
         axios({
             method: "POST",
             data: {
                 username: props.user
             },
             withCredentials: true,
-            url: "/spending",
+            url: url_serv + "/spending",
         }).then((res) => {
             if(res.data !== {}){
                 let arr = [];

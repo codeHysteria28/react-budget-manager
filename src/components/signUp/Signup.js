@@ -4,6 +4,7 @@ import "./Signup.css";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import moment from 'moment';
+import {url, local_url} from '../api';
 
 class Signup extends  React.Component {
     constructor(props) {
@@ -43,7 +44,14 @@ class Signup extends  React.Component {
             if(this.state.usernameErr !== "" || this.state.passErr !== "" || this.state.conf_password !== "") {
                 return false;
             }else {
-                axios.post('/register', user_obj).then((res) => {
+                let url_serv;
+                if(local_url === "http://localhost:3000"){
+                    url_serv = local_url;
+                }else {
+                    url_serv = url; 
+                }
+
+                axios.post(url_serv + '/register', user_obj).then((res) => {
                     if(res.data === "success") {
                         Swal.fire({
                             icon: 'success',
