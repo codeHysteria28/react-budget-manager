@@ -24,10 +24,9 @@ class UserProfile extends React.Component{
     }
 
     userProfile = username => {
-
         axios({
             method: "post",
-            url: "/getProfile",
+            url: "https://budget-manager-app28.herokuapp.com/getProfile",
             withCredentials: true,
             data: {user: username}
         }).then((res) => {
