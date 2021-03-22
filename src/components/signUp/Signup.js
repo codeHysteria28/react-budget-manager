@@ -86,7 +86,7 @@ class Signup extends  React.Component {
                             <input type="hidden" value={moment().format('MMM Do YY')} name="created_at"/>
                             <p className="h4 text-center mb-4">Registration</p>
                             <MDBRow>
-                                <MDBCol>
+                                <MDBCol sm="6">
                                     <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
                                         Your Username
                                     </label>
@@ -99,27 +99,28 @@ class Signup extends  React.Component {
                                     {this.state.passErr ? <p className="text-danger"> {this.state.passErr}</p>: ''}
                                     <input type="password" id="defaultFormLoginPasswordEx" className="form-control" name="password"/>
                                     <br />
-                                    <label htmlFor="defaultFormLoginPasswordEx" className="grey-text">
-                                        Email
-                                    </label>
-                                    <input type="email" id="defaultFormLoginPasswordEx" className="form-control" name="email" required/>
-                                    <br/>
-                                    <label htmlFor="budget" className="grey-text">
-                                        Monthly Budget
-                                    </label>
-                                    <input type="number" id="budget" className="form-control" name="budget"/>
-                                </MDBCol>
-                                <MDBCol>
-                                    <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
-                                        Full Name
-                                    </label>
-                                    <input type="text" id="defaultFormLoginEmailEx" className="form-control" name="fullName" required/>
-                                    <br />
                                     <label htmlFor="defaultFormLoginPasswordExRep" className="grey-text">
                                         Confirm Your password
                                     </label>
                                     {this.state.conf_password ? <p className="text-danger">{this.state.conf_password}</p>: ''}
                                     <input type="password" id="defaultFormLoginPasswordExRep" className="form-control" name="conf_password"/>
+                                    <br/>
+                                    <label htmlFor="budget" className="grey-text">
+                                        Monthly Budget
+                                    </label>
+                                    <input type="number" id="budget" className="form-control" name="budget"/>
+                                    <br/>
+                                </MDBCol>
+                                <MDBCol sm="6">
+                                    <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
+                                        Full Name
+                                    </label>
+                                    <input type="text" id="defaultFormLoginEmailEx" className="form-control" name="fullName" required/>
+                                    <br />
+                                    <label htmlFor="defaultFormLoginPasswordEx" className="grey-text">
+                                        Email
+                                    </label>
+                                    <input type="email" id="defaultFormLoginPasswordEx" className="form-control" name="email" required/>
                                     <br />
                                     <label htmlFor="defaultFormLoginPasswordExRep" className="grey-text">
                                         Phone
