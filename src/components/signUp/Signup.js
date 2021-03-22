@@ -45,7 +45,7 @@ class Signup extends  React.Component {
                 return false;
             }else {
 
-                axios.post('/register', user_obj).then((res) => {
+                axios.post('https://budget-manager-app28.herokuapp.com/register', user_obj).then((res) => {
                     if(res.data === "success") {
                         Swal.fire({
                             icon: 'success',

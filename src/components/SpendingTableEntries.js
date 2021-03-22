@@ -54,7 +54,7 @@ const TablePage = (props) => {
                 username: props.user
             },
             withCredentials: true,
-            url: "/spending",
+            url: "https://budget-manager-app28.herokuapp.com/spending",
         }).then((res) => {
             if(res.data !== {}){
                 let arr = [];

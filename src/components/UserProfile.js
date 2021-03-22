@@ -39,7 +39,7 @@ class UserProfile extends React.Component{
 
         axios({
             method: "post",
-            url: "/logout",
+            url: "https://budget-manager-app28.herokuapp.com/logout",
             withCredentials: true,
         }).then((res) => {
             this.cookies.remove('token');

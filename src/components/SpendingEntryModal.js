@@ -48,7 +48,7 @@ class ModalPage extends Component {
         entry_obj.paid_at = moment(this.state.startDate).format('MMM Do YY');
 
         if (entry_obj !== {}){
-            axios.post('/add_spending', entry_obj).then((res) => {
+            axios.post('https://budget-manager-app28.herokuapp.com/add_spending', entry_obj).then((res) => {
                 if(res.data === "Spending added successfully") {
                     this.handleChange();
                     Swal.fire({

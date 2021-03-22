@@ -19,7 +19,7 @@ const Login = () => {
                 password: loginPassword
             },
             withCredentials: true,
-            url: "/login",
+            url: "https://budget-manager-app28.herokuapp.com/login",
         }).then((res) => {
             if(res.data === "No user exists" || res.data === "Wrong password"){
                 Swal.fire({
