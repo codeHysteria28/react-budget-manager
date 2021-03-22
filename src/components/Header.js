@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBIcon } from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
 import './Header.css';
-import {url, local_url} from './api';
 class Header extends Component {
     state = {
         isOpen: false
@@ -13,27 +12,11 @@ class Header extends Component {
     }
 
     userProfile = () => {
-
-        let url_serv;
-        if(local_url === "http://localhost:3000"){
-            url_serv = local_url;
-        }else {
-            url_serv = url; 
-        }
-
-        window.location = url_serv + '/profile';
+        window.location = '/profile';
     }
 
     dashboard = () => {
-
-        let url_serv;
-        if(local_url === "http://localhost:3000"){
-            url_serv = local_url;
-        }else {
-            url_serv = url; 
-        }
-
-        window.location = url_serv + '/dashboard';
+        window.location = '/dashboard';
     }
 
     render() {

@@ -5,7 +5,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {url, local_url} from './api';
 
 class ModalPage extends Component {
     state = {
@@ -48,15 +47,7 @@ class ModalPage extends Component {
         entry_obj.paid_at = moment(this.state.startDate).format('MMM Do YY');
 
         if (entry_obj !== {}){
-
-            let url_serv;
-            if(local_url === "http://localhost:3000"){
-                url_serv = local_url;
-            }else {
-                url_serv = url; 
-            }
-
-            axios.post(url_serv + '/add_spending', entry_obj).then((res) => {
+            axios.post('/add_spending', entry_obj).then((res) => {
                 if(res.data === "Spending added successfully") {
                     this.handleChange();
                     Swal.fire({
