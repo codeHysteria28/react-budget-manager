@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import axios from "axios";
 import Swal from "sweetalert2";
+import * as Sentry from "@sentry/react";
 
 class ModalPage extends Component {
     state = {
@@ -124,4 +125,4 @@ class ModalPage extends Component {
     }
 }
 
-export default ModalPage;
+export default Sentry.withProfiler(ModalPage);

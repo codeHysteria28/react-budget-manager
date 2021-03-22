@@ -5,6 +5,7 @@ import Header from "./Header";
 import SpendingTableEntries from "./SpendingTableEntries";
 import jwt_decode from "jwt-decode";
 import Cookies from 'universal-cookie';
+import * as Sentry from "@sentry/react";
 
 class Dashboard extends React.Component  {
     constructor(props) {
@@ -70,4 +71,4 @@ class Dashboard extends React.Component  {
     }
 }
 
-export default Dashboard;
+export default Sentry.withProfiler(Dashboard);

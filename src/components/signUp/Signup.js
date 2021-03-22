@@ -4,6 +4,7 @@ import "./Signup.css";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import moment from 'moment';
+import * as Sentry from "@sentry/react";
 
 class Signup extends  React.Component {
     constructor(props) {
@@ -144,4 +145,4 @@ class Signup extends  React.Component {
     }
 };
 
-export default Signup;
+export default Sentry.withProfiler(Signup);

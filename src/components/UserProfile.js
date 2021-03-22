@@ -6,6 +6,7 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 import {MDBContainer, MDBBtn, MDBRow, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 import userPlaceholder from '../images/user.png';
+import * as Sentry from "@sentry/react";
 
 class UserProfile extends React.Component{
     constructor(props) {
@@ -180,4 +181,4 @@ class UserProfile extends React.Component{
     }
 }
 
-export default UserProfile;
+export default Sentry.withProfiler(UserProfile);

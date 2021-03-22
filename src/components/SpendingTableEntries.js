@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import './SpendingTableEntries.css';
 import Statistics from "./Statistics";
+import * as Sentry from "@sentry/react";
 
 const TablePage = (props) => {
     const [spending,setSpending] = useState(null);
@@ -153,4 +154,4 @@ const TablePage = (props) => {
     );
 };
 
-export default TablePage;
+export default Sentry.withProfiler(TablePage);

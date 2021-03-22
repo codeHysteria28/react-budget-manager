@@ -3,6 +3,7 @@ import {MDBBtn, MDBCol, MDBContainer, MDBRow} from "mdbreact";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import Cookies from 'universal-cookie';
+import * as Sentry from "@sentry/react";
 
 const Login = () => {
     const [loginUsername, setLoginUsername] = useState("");
@@ -62,4 +63,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default Sentry.withProfiler(Login);

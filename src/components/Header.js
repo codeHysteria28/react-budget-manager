@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBIcon } from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
 import './Header.css';
+import * as Sentry from "@sentry/react";
 class Header extends Component {
     state = {
         isOpen: false
@@ -53,4 +54,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default Sentry.withProfiler(Header);
