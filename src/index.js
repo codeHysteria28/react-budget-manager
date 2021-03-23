@@ -33,4 +33,4 @@ render((
         </BrowserRouter>
 ),document.getElementById('root'));
 
-serviceWorkerRegistration.register();
+serviceWorkerRegistration.unregister();
