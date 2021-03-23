@@ -35,7 +35,6 @@ class UserProfile extends React.Component{
     }
 
     logout = () => {
-
         axios({
             method: "post",
             url: "https://budget-manager-app28.herokuapp.com/logout",
@@ -64,6 +63,35 @@ class UserProfile extends React.Component{
             this.setState({auth: true});
             this.userProfile(dekode_jwt.username);
         }
+    }
+
+    deleteUser = () => {
+        Swal.fire({
+            icon: 'info',
+            title: 'Are you sure to delete your account ?',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: `Delete Permanently`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios({
+                    method: "post",
+                    url: "https://budget-manager-app28.herokuapp.com/deleteUser",
+                    data: {username: this.state.username},
+                    withCredentials: true,
+                }).then((res) => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: `${res.data}`,
+                        text: 'You will be logged out ...'
+                    });
+
+                    setTimeout(() => {
+                        this.logout();
+                    }, 1500)
+                });
+            }
+        })
     }
 
 
@@ -168,7 +196,7 @@ class UserProfile extends React.Component{
                                     }
                                 </MDBCard>
                                 <MDBBtn>Edit Profile</MDBBtn>
-                                <MDBBtn color="danger">Delete Account</MDBBtn>
+                                <MDBBtn color="danger" onClick={this.deleteUser}>Delete Account</MDBBtn>
                             </MDBCol>
                         </MDBRow>
                     </MDBContainer>
