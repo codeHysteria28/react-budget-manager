@@ -13,14 +13,14 @@ const TablePage = (props) => {
     const [activeItem, setActiveItem] = useState("1");
     const [mostExpItem, setMostExpItem] = useState(null);
     const [mostExpItemName, setMostExpItemName] = useState("");
-    const [travel, setTravel] = useState(null);
-    const [groceries, setGroceries] = useState(null);
-    const [clothes, setClothes] = useState(null);
-    const [elect, setElect] = useState(null);
-    const [hobby, setHobby] = useState(null);
-    const [gift, setGift] = useState(null);
-    const [appPayments, setAppPayments] = useState(null);
-    const [uncategorized, setUncategorized] = useState(null);
+    const [travel, setTravel] = useState(0);
+    const [groceries, setGroceries] = useState(0);
+    const [clothes, setClothes] = useState(0);
+    const [elect, setElect] = useState(0);
+    const [hobby, setHobby] = useState(0);
+    const [gift, setGift] = useState(0);
+    const [appPayments, setAppPayments] = useState(0);
+    const [uncategorized, setUncategorized] = useState(0);
 
     const toggle = tab => {
         if (activeItem !== tab) {
