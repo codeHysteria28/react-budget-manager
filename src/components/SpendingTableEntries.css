@@ -25,3 +25,38 @@
 .spender {
     display: flex;
 }
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+div.cols {
+    background-color: #F1F1F1;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-left: 1rem;
+}
+  
+h3.numbers {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 2.5rem;
+}
+
+p.titles {
+    position: absolute;
+    bottom: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    color: #656565;
+}
+
+.thumbnail_photo {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 45px;
+    height: 45px;
+  }
