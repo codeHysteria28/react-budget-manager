@@ -10,7 +10,9 @@ import { BrowserRouter, Route,Switch} from 'react-router-dom';
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import UserProfile from './components/UserProfile';
+import LandingPage from './LandingPage';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import ReactGA from 'react-ga';
 
 Sentry.init({
     dsn: "https://3d2de584119d4f89989a6a54c298910a@o556223.ingest.sentry.io/5686782",
@@ -22,12 +24,16 @@ Sentry.init({
     tracesSampleRate: 1.0,
 });
 
+ReactGA.initialize('G-CEGL9RLCRX');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 render((
         <BrowserRouter>
             <Switch>
-                <Route exact={true} path="/" component={Signup} />
+                {/* <Route exact={true} path="/" component={LandingPage} /> */}
                 <Route exact={true} path="/dashboard" component={Dashboard} />
                 <Route exact={true} path="/profile" component={UserProfile}/>
+                <Route exact={true} path="/" component={Signup}/>
                 <Route exact={true} path="/login" component={Login} />
             </Switch>
         </BrowserRouter>
