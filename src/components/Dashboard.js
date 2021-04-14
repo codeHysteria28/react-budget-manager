@@ -61,7 +61,7 @@ class Dashboard extends React.Component  {
                 {this.state.auth
                     ?
                     <div>
-                        <Header user={this.state.username} logout={this.logout}/>
+                        <Header user={this.state.username} logout={this.logout} loc="dashboard"/>
                         <SpendingTableEntries user={this.state.username}/>
                     </div>
                     : ""

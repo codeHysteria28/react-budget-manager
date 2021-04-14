@@ -83,7 +83,7 @@ class Signup extends  React.Component {
                 <MDBCol md="6 mx-auto">
                     <form id="sign_form" onSubmit={this.signup.bind(this)}>
                         <input type="hidden" value={moment().format('MMM Do YY')} name="created_at"/>
-                        <p className="h4 text-center mb-4">Registration</p>
+                        <p className="h4 text-center mb-4">Get Started with Budgeter</p>
                         <MDBRow>
                             <MDBCol sm="6">
                                 <label htmlFor="defaultFormLoginEmailEx" className="grey-text">

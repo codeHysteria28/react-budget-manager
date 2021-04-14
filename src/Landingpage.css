@@ -1,0 +1,46 @@
+h1.landing_heading {
+    color: #2A4F96;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    margin-bottom: 1.5rem;
+}
+
+img.bg-landing {
+    width: 100%;
+}
+
+.heading_part2 {
+    color: #2BBBAD;
+}
+
+.landing_page_row {
+    margin-top: 2.5rem;
+}
+
+.heading_col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.get_started_btn {
+    align-self: flex-start;
+    margin: 0 !important;
+    background-color: #2BBBAD !important;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+div.our_features {
+    margin-top: 10rem;
+}
+
+h2.features_heading {
+    color: #2A4F96;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 45px;
+    margin-bottom: 5rem;
+}

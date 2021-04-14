@@ -30,10 +30,10 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 render((
         <BrowserRouter>
             <Switch>
-                {/* <Route exact={true} path="/" component={LandingPage} /> */}
+                <Route exact={true} path="/" component={LandingPage} />
                 <Route exact={true} path="/dashboard" component={Dashboard} />
                 <Route exact={true} path="/profile" component={UserProfile}/>
-                <Route exact={true} path="/" component={Signup}/>
+                <Route exact={true} path="/signup" component={Signup}/>
                 <Route exact={true} path="/login" component={Login} />
             </Switch>
         </BrowserRouter>

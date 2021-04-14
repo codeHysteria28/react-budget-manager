@@ -105,7 +105,7 @@ class UserProfile extends React.Component{
                 {this.state.auth 
                 ? 
                 <div>
-                    <Header user={this.state.username} logout={this.logout}/>
+                    <Header user={this.state.username} logout={this.logout} loc="dashboard"/>
                     <br/>
                     <MDBContainer>
                         <MDBRow>

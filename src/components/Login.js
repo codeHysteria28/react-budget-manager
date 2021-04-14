@@ -42,7 +42,7 @@ const Login = () => {
             <MDBRow className="signup_row">
                 <MDBCol md="6 mx-auto">
                     <form id="sign_form">
-                        <p className="h4 text-center mb-4">Login</p>
+                        <p className="h4 text-center mb-4">Welcome Back</p>
                         <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
                             Your Username
                         </label>
