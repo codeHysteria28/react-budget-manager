@@ -6,7 +6,9 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 import {MDBContainer, MDBBtn, MDBRow, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 import userPlaceholder from '../images/user.png';
+import kofi from '../images/kofi.png';
 import * as Sentry from "@sentry/react";
+import './UserProfile.css';
 
 class UserProfile extends React.Component{
     constructor(props) {
@@ -114,12 +116,12 @@ class UserProfile extends React.Component{
                                     <MDBCardImage style={{marginTop: 10}} className="img-fluid" src={userPlaceholder}/>
                                     <MDBCardBody>
                                         <MDBCardTitle className="text-center">{this.state.username}</MDBCardTitle>
-                                        <MDBCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</MDBCardText>
+                                        <MDBCardText className="text-center">Some quick example of your BIO</MDBCardText>
                                     </MDBCardBody>
                                 </MDBCard>
                             </MDBCol>
                             <MDBCol sm="6" md="8">
-                                <MDBCard style={{marginBottom: 45}}>
+                                <MDBCard style={{marginBottom: 30}}>
                                     {this.state.userProfile ? 
                                         <MDBCardBody style={{padding: "3rem"}}>
                                         <MDBRow>
@@ -197,6 +199,12 @@ class UserProfile extends React.Component{
                                 </MDBCard>
                                 <MDBBtn>Edit Profile</MDBBtn>
                                 <MDBBtn color="danger" onClick={this.deleteUser}>Delete Account</MDBBtn>
+                                <a href="https://www.buymeacoffee.com/branislavbuna" target="blank">
+                                    <MDBBtn className="support_btn">
+                                        <img src={kofi} alt="buy me a coffee logo" className="kofi"/>
+                                        Support Creator
+                                    </MDBBtn>
+                                </a>
                             </MDBCol>
                         </MDBRow>
                     </MDBContainer>

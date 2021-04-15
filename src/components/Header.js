@@ -81,11 +81,11 @@ class Header extends Component {
                                             <MDBIcon icon="rocket" style={{marginRight: 15}}/> Get Started
                                         </MDBNavLink>
                                     </MDBNavItem>
-                                    <MDBNavItem>
+                                    {/* <MDBNavItem>
                                         <MDBNavLink to="/signup">
                                             <MDBIcon icon="comments" style={{marginRight: 15}}/> Get in touch
                                         </MDBNavLink>
-                                    </MDBNavItem>
+                                    </MDBNavItem> */}
                                 </MDBNavbarNav>
                             </MDBCollapse>
                         </MDBNavbar>

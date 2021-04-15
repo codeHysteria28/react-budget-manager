@@ -37,7 +37,7 @@ const LandingPage = () => {
                         <MDBCol md="6" className="statistics">
                             <h3 className="text-center mt-4 mb-3 feature_heading_detail">Simple Statistics</h3>
                             <img src={feature1} alt="feature 1" className="img-fluid"/>
-                            <p className="feature_para_detail mt-3 text-center">Our lovely, clear and simple statistics will displat all the valuable info about your spendings which matter the most ! They covering lots of
+                            <p className="feature_para_detail mt-3 text-center">Our lovely, clear and simple statistics will display all the valuable info about your spendings which matter the most ! They covering lots of
                                 categories eg. Total spend, most expensive item, travel, groceries, clothes, electronics, hobby, gifts, app payments, uncategorized. More categories
                                 will be added to support the needs of the customer. As we are always want to improve and listen to our customer needs you can give us on some improvements
                                 on this statistics whenever you want to. PS. Graphs comming soon.
@@ -56,7 +56,7 @@ const LandingPage = () => {
                 </div>
                 <br/><br/><br/>
                 <div className="whyUs">
-                    <h2 className="features_heading text-center">Why us ?</h2>
+                    <h2 className="features_heading text-center">Why Us ?</h2>
                     <MDBRow>
                         <MDBCol md="4" className="text-center">
                             <h3 className="text-center mt-4 mb-3 feature_heading_detail">Free Usage</h3>
