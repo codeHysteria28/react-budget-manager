@@ -1,5 +1,6 @@
 import React from 'react'
 import * as Sentry from "@sentry/react";
+import CookieConsent from "react-cookie-consent";
 import bg from './images/5240.jpg';
 import feature1 from './images/feature1.png';
 import feature2 from './images/feature2.png';
@@ -16,9 +17,9 @@ const LandingPage = () => {
         window.location = '/signup';
     }
 
-
     return (
         <>
+            <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
             <Header loc="landing_page"/>
             <MDBContainer>
                 <MDBRow className="landing_page_row">

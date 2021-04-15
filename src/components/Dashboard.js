@@ -28,7 +28,7 @@ class Dashboard extends React.Component  {
             withCredentials: true,
         }).then((res) => {
             this.cookies.remove('token');
-            window.location = '/login';
+            window.location = '/';
         });
     }
 
