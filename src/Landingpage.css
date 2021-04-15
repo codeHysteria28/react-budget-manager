@@ -67,3 +67,17 @@ img.why_us_img {
     border-right: 1px solid #2A4F96;
     border-left: 1px solid #2A4F96;
 }
+
+
+@media only screen and (max-width: 430px) {
+    .statistics {
+        border-right: none;
+        border-bottom: 1px solid #2A4F96;
+    }
+
+    .middle_us {
+        border-right: none;
+        border-left: none;
+    }
+
+  }

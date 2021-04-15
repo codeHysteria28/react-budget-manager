@@ -3,7 +3,6 @@ import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNav
 import { BrowserRouter as Router } from 'react-router-dom';
 import './Header.css';
 import * as Sentry from "@sentry/react";
-import logo from '../images/app-ico.png';
 class Header extends Component {
     state = {
         isOpen: false
@@ -66,7 +65,7 @@ class Header extends Component {
                 <Router>
                         <MDBNavbar color="default-color" dark expand="md">
                             <MDBNavbarBrand>
-                                <img src={logo} alt="page logo" className="logo_header mr-3"/>
+                                {/* <img src={logo} alt="page logo" className="logo_header mr-3"/> */}
                                 <strong className="white-text landing_header_head">Budgeter</strong>
                             </MDBNavbarBrand>
                             <MDBNavbarToggler onClick={this.toggleCollapse} />
