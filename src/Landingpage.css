@@ -37,10 +37,33 @@ div.our_features {
     margin-top: 10rem;
 }
 
+.statistics {
+    border-right: 1px solid #2A4F96;
+}
+
 h2.features_heading {
     color: #2A4F96;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 45px;
     margin-bottom: 5rem;
+}
+
+h3.feature_heading_detail {
+    font-family: 'Roboto', sans-serif;
+    color: #2BBBAD;
+    font-weight: 400;
+}
+
+p.feature_para_detail {
+    font-family: 'Roboto', sans-serif;
+}
+
+img.why_us_img {
+    width: 35%;
+}
+
+.middle_us {
+    border-right: 1px solid #2A4F96;
+    border-left: 1px solid #2A4F96;
 }

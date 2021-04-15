@@ -3,3 +3,11 @@
     border-radius: 10px;
     margin-right: 10px;
 } */
+
+img.logo_header {
+    width: 20%;
+}
+
+.landing_header_head {
+    font-size: 25px;
+}
