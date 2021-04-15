@@ -10,6 +10,7 @@ const Footer = () => {
                 <MDBRow>
                 <MDBCol md="6">
                     <h5 className="title">Budgeter Club</h5>
+                    <small>Alpha v1.0</small>
                     <p>Created with ❤️ by <a href="https://twitter.com/Chewbacca_w0w" target="blank">@Chewbacca_w0w</a></p>
                 </MDBCol>
                 <MDBCol md="6">
