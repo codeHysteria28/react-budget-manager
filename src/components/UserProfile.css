@@ -6,3 +6,14 @@ img.kofi {
     width: 20px;
     height: 20px;
 }
+
+.avatar_handler {
+    background-color: unset;
+    border: none;
+    outline: none;
+}
+
+.avatar_handler:focus {
+    border: none;
+    outline: none;
+}

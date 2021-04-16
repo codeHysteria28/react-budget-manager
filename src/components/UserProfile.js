@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 import Cookies from 'universal-cookie';
 import axios from "axios";
 import Swal from 'sweetalert2';
-import {MDBContainer, MDBBtn, MDBRow, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
+import {MDBContainer, MDBBtn, MDBRow, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 import userPlaceholder from '../images/user.png';
 import kofi from '../images/kofi.png';
 import * as Sentry from "@sentry/react";
@@ -19,7 +19,10 @@ class UserProfile extends React.Component{
             auth: false,
             username: null,
             user_id: null,
-            userProfile: null
+            userProfile: null,
+            modal: false,
+            file: null,
+            avatar: ''
         }
 
         this.cookies = new Cookies()
@@ -33,6 +36,28 @@ class UserProfile extends React.Component{
             data: {user: username}
         }).then((res) => {
             this.setState({userProfile: res.data});
+        });
+    }
+
+    arrayBufferToBase64 = buffer => {
+        let binary = '';
+        let bytes = [].slice.call(new Uint8Array(buffer));
+
+        bytes.forEach((b) => binary += String.fromCharCode(b));
+
+        return window.btoa(binary);
+    }
+
+    getUserAvatar = username => {
+        axios({
+            method: "post",
+            url: "https://budget-manager-app28.herokuapp.com/get_avatar",
+            withCredentials: true,
+            data: {user: username}
+        }).then((res) => {
+            let base64Flag = `data:${res.data.contentType};base64,`;
+            let imageStr = this.arrayBufferToBase64(res.data.avatar.data);
+            this.setState({avatar: base64Flag + imageStr})
         });
     }
 
@@ -64,6 +89,7 @@ class UserProfile extends React.Component{
             this.setState({user_id: dekode_jwt._id});
             this.setState({auth: true});
             this.userProfile(dekode_jwt.username);
+            this.getUserAvatar(dekode_jwt.username);
         }
     }
 
@@ -96,6 +122,31 @@ class UserProfile extends React.Component{
         })
     }
 
+    toggle = () => {
+        this.setState({modal: !this.state.modal})
+    }
+
+    saveImg = (e) => {
+        const selectedFile = e.target.files[0];
+        this.setState({
+            file: selectedFile,
+            loaded: 0
+        });
+    }
+
+    uploadAvatar = () => {
+        const data = new FormData();
+        data.append('avatar', this.state.file);
+        data.append('username', this.state.username);
+
+        axios({
+            method: "post",
+            url: "https://budget-manager-app28.herokuapp.com/add_avatar",
+            data: data
+        }).then((res) => {
+            this.getUserAvatar(this.state.username);
+        });
+    }
 
     componentDidMount() {
         this.getUser();
@@ -113,7 +164,9 @@ class UserProfile extends React.Component{
                         <MDBRow>
                             <MDBCol sm="6" md="4">
                                 <MDBCard>
-                                    <MDBCardImage style={{marginTop: 10}} className="img-fluid" src={userPlaceholder}/>
+                                    <button onClick={this.toggle} className="avatar_handler">
+                                        <MDBCardImage style={{marginTop: 10}} className="img-fluid" src={this.state.avatar === '' ? userPlaceholder : this.state.avatar}/>
+                                    </button>
                                     <MDBCardBody>
                                         <MDBCardTitle className="text-center">{this.state.username}</MDBCardTitle>
                                         <MDBCardText className="text-center">Some quick example of your BIO</MDBCardText>
@@ -207,6 +260,29 @@ class UserProfile extends React.Component{
                                 </a>
                             </MDBCol>
                         </MDBRow>
+                        <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
+                            <MDBModalHeader toggle={this.toggle}>Avatar Upload</MDBModalHeader>
+                            <MDBModalBody>
+                            <div className="input-group">
+                                <div className="custom-file">
+                                    <input
+                                    type="file"
+                                    className="custom-file-input"
+                                    id="inputGroupFile01"
+                                    onChange={this.saveImg}
+                                    name="avatar"
+                                    />
+                                    <label className="custom-file-label" htmlFor="inputGroupFile01">
+                                    Choose file
+                                    </label>
+                                </div>
+                            </div>
+                            </MDBModalBody>
+                            <MDBModalFooter>
+                                <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
+                                <MDBBtn color="primary" onClick={this.uploadAvatar}>Upload</MDBBtn>
+                            </MDBModalFooter>
+                        </MDBModal>
                     </MDBContainer>
                 </div>
                 : ""
