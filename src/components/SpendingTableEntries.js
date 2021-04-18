@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import './SpendingTableEntries.css';
 import Statistics from "./Statistics";
 import * as Sentry from "@sentry/react";
+import toast, { Toaster } from 'react-hot-toast';
 
 const TablePage = (props) => {
     const [spending,setSpending] = useState(null);
@@ -21,6 +22,8 @@ const TablePage = (props) => {
     const [gift, setGift] = useState(0);
     const [appPayments, setAppPayments] = useState(0);
     const [uncategorized, setUncategorized] = useState(0);
+
+    const data_loaded = () => toast.success('Data loaded successfully.');
 
     const toggle = tab => {
         if (activeItem !== tab) {
@@ -214,6 +217,7 @@ const TablePage = (props) => {
 
                     setSpending([...arr]);
                 }
+                data_loaded();
             }else {
                 Swal.fire({
                     icon: 'error',
@@ -276,6 +280,7 @@ const TablePage = (props) => {
                         mostExpItemName={mostExpItemName}/> 
                     </MDBTabPane>
                 </MDBTabContent>
+                <Toaster/>
             </MDBContainer>
         </>
     );

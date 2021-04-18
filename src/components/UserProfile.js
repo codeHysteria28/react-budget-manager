@@ -4,11 +4,18 @@ import jwt_decode from "jwt-decode";
 import Cookies from 'universal-cookie';
 import axios from "axios";
 import Swal from 'sweetalert2';
-import {MDBContainer, MDBBtn, MDBRow, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBRow, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 import userPlaceholder from '../images/user.png';
 import kofi from '../images/kofi.png';
 import * as Sentry from "@sentry/react";
 import './UserProfile.css';
+import toast, { Toaster } from 'react-hot-toast';
+
+const loaded_user_profile = () => toast.success('Successfully loaded user profile.');
+const avatar_uploaded = () => toast.success('Avatar uploaded.');
+const avatar_upload_err = () => toast.error('Error with uploading avatar.');
+const budget_updated = () => toast.success('Monthly budget was changed successfully.');
+const budget_update_err = () => toast.error('Error with updating monthly budget.');
 
 class UserProfile extends React.Component{
     constructor(props) {
@@ -22,7 +29,10 @@ class UserProfile extends React.Component{
             userProfile: null,
             modal: false,
             file: null,
-            avatar: ''
+            avatar: '',
+            budgetModal: false,
+            budget: null,
+            new_budget: null
         }
 
         this.cookies = new Cookies()
@@ -36,6 +46,8 @@ class UserProfile extends React.Component{
             data: {user: username}
         }).then((res) => {
             this.setState({userProfile: res.data});
+            this.setState({budget: res.data.monthlyBudget});
+            loaded_user_profile();
         });
     }
 
@@ -123,7 +135,11 @@ class UserProfile extends React.Component{
     }
 
     toggle = () => {
-        this.setState({modal: !this.state.modal})
+        this.setState({modal: !this.state.modal});
+    }
+
+    budgetToggle = () => {
+        this.setState({budgetModal: !this.state.budgetModal});
     }
 
     saveImg = (e) => {
@@ -142,10 +158,43 @@ class UserProfile extends React.Component{
         axios({
             method: "post",
             url: "https://budget-manager-app28.herokuapp.com/add_avatar",
+            withCredentials: true,
             data: data
-        }).then((res) => {
+        }).then(res => {
             this.getUserAvatar(this.state.username);
+            this.toggle();
+            if(res.data === "success") {
+                avatar_uploaded();
+            }else {
+                avatar_upload_err();
+            }
         });
+    }
+
+    changeBudget = (e) => {
+        const new_budget = Number(e.target.value);
+        this.setState({new_budget: new_budget});
+    }
+
+    updateBudget = () => {
+        if(this.state.new_budget !== null || this.state.new_budget !== undefined) {
+            axios({
+                method: "post",
+                url: "https://budget-manager-app28.herokuapp.com/changeBudget",
+                withCredentials: true,
+                data: {new_budget: this.state.new_budget, username: this.state.username}
+            }).then(res => {
+                if(res.data === "success") {
+                    this.budgetToggle();
+                    this.getUser();
+                    budget_updated();
+                }else {
+                    budget_update_err();
+                }
+            })
+        }else {
+            budget_update_err();
+        }
     }
 
     componentDidMount() {
@@ -169,14 +218,14 @@ class UserProfile extends React.Component{
                                     </button>
                                     <MDBCardBody>
                                         <MDBCardTitle className="text-center">{this.state.username}</MDBCardTitle>
-                                        <MDBCardText className="text-center">Some quick example of your BIO</MDBCardText>
+                                        <MDBCardText className="text-center">Focusing on my spending.</MDBCardText>
                                     </MDBCardBody>
                                 </MDBCard>
                             </MDBCol>
                             <MDBCol sm="6" md="8">
-                                <MDBCard style={{marginBottom: 30}}>
+                                <MDBCard style={{marginBottom: 32}}>
                                     {this.state.userProfile ? 
-                                        <MDBCardBody style={{padding: "3rem"}}>
+                                        <MDBCardBody style={{padding: "2rem"}}>
                                         <MDBRow>
                                             <MDBCol style={{ maxWidth: "15rem" }}>
                                                 Full Name
@@ -219,14 +268,15 @@ class UserProfile extends React.Component{
                                                 height: .2,
                                                 borderColor : '#2BBBAD'
                                         }}/>
-                                        <MDBRow>
+                                         <MDBRow>
                                             <MDBCol style={{ maxWidth: "15rem" }}>
-                                                Address
+                                                Monthly Budget
                                             </MDBCol>
                                             <MDBCol>
-                                                <small>{this.state.userProfile.address}</small>
+                                                <small>{this.state.userProfile.monthlyBudget} €</small>
                                             </MDBCol>
                                         </MDBRow>
+                                        <a onClick={this.budgetToggle}><small className="text-success">Change budget</small></a>
                                         <hr  style={{
                                                 color: '#2BBBAD',
                                                 backgroundColor: '#2BBBAD',
@@ -250,14 +300,16 @@ class UserProfile extends React.Component{
                                     </MDBCardBody> : ""
                                     }
                                 </MDBCard>
-                                <MDBBtn>Edit Profile</MDBBtn>
-                                <MDBBtn color="danger" onClick={this.deleteUser}>Delete Account</MDBBtn>
-                                <a href="https://www.buymeacoffee.com/branislavbuna" target="blank">
-                                    <MDBBtn className="support_btn">
-                                        <img src={kofi} alt="buy me a coffee logo" className="kofi"/>
-                                        Support Creator
-                                    </MDBBtn>
-                                </a>
+                                <div className="profile_btns">
+                                    <MDBBtn>Edit Profile</MDBBtn>
+                                    <MDBBtn color="danger" onClick={this.deleteUser}>Delete Account</MDBBtn>
+                                    <a href="https://www.buymeacoffee.com/branislavbuna" target="blank">
+                                        <MDBBtn className="support_btn">
+                                            <img src={kofi} alt="buy me a coffee logo" className="kofi"/>
+                                            Support Creator
+                                        </MDBBtn>
+                                    </a>
+                                </div>
                             </MDBCol>
                         </MDBRow>
                         <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
@@ -283,6 +335,24 @@ class UserProfile extends React.Component{
                                 <MDBBtn color="primary" onClick={this.uploadAvatar}>Upload</MDBBtn>
                             </MDBModalFooter>
                         </MDBModal>
+
+                        <MDBModal isOpen={this.state.budgetModal} toggle={this.budgetToggle}>
+                            <MDBModalHeader>Change Budget</MDBModalHeader>
+                            <MDBModalBody>
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    name="budget"
+                                    placeholder={'Current budget: ' + this.state.budget + '€'}
+                                    onChange={this.changeBudget}
+                                />
+                            </MDBModalBody>
+                            <MDBModalFooter>
+                                <MDBBtn color="secondary" onClick={this.budgetToggle}>Close</MDBBtn>
+                                <MDBBtn color="primary" onClick={this.updateBudget}>Change Budget</MDBBtn>
+                            </MDBModalFooter>
+                        </MDBModal>
+                        <Toaster />
                     </MDBContainer>
                 </div>
                 : ""

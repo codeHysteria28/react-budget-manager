@@ -17,7 +17,9 @@ const Statistics = (props) => {
         <MDBContainer>
             <div className="row statisticRow">
                 {props.totalAmount === null && props.mostExpItem === null && props.mostExpItemName === "" ?
-                <h1>No data recorded so far.</h1>
+                <>
+                    <h1>No data recorded so far.</h1>
+                </>
                 :
                 <>
                     <div className="col-md my-2 cols">
