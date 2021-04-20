@@ -1,0 +1,50 @@
+.bg {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-color: #2bbbad;
+    
+}
+
+.login_form {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow:  -20px -20px 60px #259f93,20px 20px 60px #31d7c7;
+    margin-top: 5rem;
+    position: relative;
+}
+
+.username:focus, .password:focus {
+    box-shadow: 0 0 0 0.2rem rgb(43 187 173 / 25%);
+    border-color: #2bbbad !important;
+}
+
+.login_btn {
+    background-color: #2bbbad !important;
+}
+
+.inv_ico {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: -90px;
+    right: -7px;
+    transition: all .5s ease;
+}
+
+.inv_ico:hover {
+    width: 160px;
+    height: 160px;
+    transition: all .5s ease;
+}
+
+.not_a_user_yet {
+    color: #2bbbad;
+    font-weight: 500;
+}
+
+.not_a_user_yet:hover {
+    color: green;
+}

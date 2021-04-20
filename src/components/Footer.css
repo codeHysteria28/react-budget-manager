@@ -1,0 +1,20 @@
+.licence_btn {
+    background-color: unset;
+    border: none;
+    color: #fff;
+}
+
+.licence_btn:focus {
+    outline: none;
+    border: none;
+}
+
+.imgs_lic {
+    width: 15%;
+}
+
+.modal_Body {
+    max-height: 350px !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

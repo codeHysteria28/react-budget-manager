@@ -19,7 +19,5 @@ img.kofi {
 }
 
 .profile_btns {
-    display: flex;
-    justify-content: space-between;
     margin-left: -5px;
 }

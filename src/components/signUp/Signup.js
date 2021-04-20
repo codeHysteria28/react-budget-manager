@@ -5,6 +5,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import moment from 'moment';
 import * as Sentry from "@sentry/react";
+import rocket from '../../images/rocket.png'
 
 class Signup extends  React.Component {
     constructor(props) {
@@ -79,67 +80,59 @@ class Signup extends  React.Component {
 
     render() {
         return (
-            <MDBContainer className="signup_cont">
-                <MDBCol md="6 mx-auto">
-                    <form id="sign_form" onSubmit={this.signup.bind(this)}>
-                        <input type="hidden" value={moment().format('MMM Do YY')} name="created_at"/>
-                        <p className="h4 text-center mb-4">Get Started with Budgeter</p>
-                        <MDBRow>
-                            <MDBCol sm="6">
-                                <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
-                                    Your Username
-                                </label>
-                                {this.state.usernameErr ? <p className="text-danger">{this.state.usernameErr}</p>: ''}
-                                <input type="text" id="defaultFormLoginEmailEx" className="form-control" name="username"/>
-                                <br />
-                                <label htmlFor="defaultFormLoginPasswordEx" className="grey-text">
-                                    Your password
-                                </label>
-                                {this.state.passErr ? <p className="text-danger"> {this.state.passErr}</p>: ''}
-                                <input type="password" id="defaultFormLoginPasswordEx" className="form-control" name="password"/>
-                                <br />
-                                <label htmlFor="defaultFormLoginPasswordExRep" className="grey-text">
-                                    Confirm Your password
-                                </label>
-                                {this.state.conf_password ? <p className="text-danger">{this.state.conf_password}</p>: ''}
-                                <input type="password" id="defaultFormLoginPasswordExRep" className="form-control" name="conf_password"/>
-                                <br/>
-                                <label htmlFor="budget" className="grey-text">
-                                    Monthly Budget
-                                </label>
-                                <input type="number" id="budget" className="form-control" name="budget"/>
-                                <br/>
-                            </MDBCol>
-                            <MDBCol sm="6" md="6">
-                                <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
-                                    Full Name
-                                </label>
-                                <input type="text" id="defaultFormLoginEmailEx" className="form-control" name="fullName" required/>
-                                <br />
-                                <label htmlFor="defaultFormLoginPasswordEx" className="grey-text">
-                                    Email
-                                </label>
-                                <input type="email" id="defaultFormLoginPasswordEx" className="form-control" name="email" required/>
-                                <br />
-                                <label htmlFor="defaultFormLoginPasswordExRep" className="grey-text">
-                                    Phone
-                                </label>
-                                {this.state.conf_password ? <p className="text-danger">{this.state.conf_password}</p>: ''}
-                                <input type="text" id="defaultFormLoginPasswordExRep" className="form-control" name="phone"/>
-                                <br/>
-                                <label htmlFor="address" className="grey-text">
-                                    Address
-                                </label>
-                                <input type="text" id="address" className="form-control" name="address"/>
-                            </MDBCol>
-                        </MDBRow>
-                        <div className="text-center mt-4">
-                            <MDBBtn color="success" type="submit">Register</MDBBtn>
-                            <MDBBtn color="indigo" type="button" onClick={this.login_screen.bind(this)}>Already a member ?</MDBBtn>
-                        </div>
-                    </form>
-                </MDBCol>
-            </MDBContainer>
+            <>
+                <div className="bg"></div>
+                <MDBContainer className="signup_cont">
+                    <MDBCol md="6 mx-auto reg_form">
+                        <img src={rocket} className="rocket_ico" alt="get rocket started"/>
+                        <form id="sign_form" onSubmit={this.signup.bind(this)}>
+                            <input type="hidden" value={moment().format('MMM Do YY')} name="created_at"/>
+                            <MDBRow>
+                                <MDBCol sm="6">
+                                    <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
+                                        Your Username
+                                    </label>
+                                    {this.state.usernameErr ? <p className="text-danger">{this.state.usernameErr}</p>: ''}
+                                    <input type="text" id="defaultFormLoginEmailEx" className="form-control" name="username"/>
+                                    <br />
+                                    <label htmlFor="defaultFormLoginPasswordEx" className="grey-text">
+                                        Your password
+                                    </label>
+                                    {this.state.passErr ? <p className="text-danger"> {this.state.passErr}</p>: ''}
+                                    <input type="password" id="defaultFormLoginPasswordEx" className="form-control" name="password"/>
+                                    <br />
+                                    <label htmlFor="defaultFormLoginPasswordExRep" className="grey-text">
+                                        Confirm Your password
+                                    </label>
+                                    {this.state.conf_password ? <p className="text-danger">{this.state.conf_password}</p>: ''}
+                                    <input type="password" id="defaultFormLoginPasswordExRep" className="form-control mb-2" name="conf_password"/>
+                                    <a href="/login" className="not_a_user_yet">Already a member ?</a>
+                                    <br/>
+                                </MDBCol>
+                                <MDBCol sm="6" md="6">
+                                    <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
+                                        Full Name
+                                    </label>
+                                    <input type="text" id="defaultFormLoginEmailEx" className="form-control" name="fullName" required/>
+                                    <br />
+                                    <label htmlFor="defaultFormLoginPasswordEx" className="grey-text">
+                                        Email
+                                    </label>
+                                    <input type="email" id="defaultFormLoginPasswordEx" className="form-control" name="email" required/>
+                                    <br/>
+                                    <label htmlFor="budget" className="grey-text">
+                                        Monthly Budget
+                                    </label>
+                                    <input type="number" id="budget" className="form-control" name="budget"/>
+                                </MDBCol>
+                            </MDBRow>
+                            <div className="text-center mt-4">
+                                <MDBBtn color="success" className="login_btn" type="submit">Register</MDBBtn>
+                            </div>
+                        </form>
+                    </MDBCol>
+                </MDBContainer>
+            </>
         );
     }
 };

@@ -80,7 +80,7 @@ class UserProfile extends React.Component{
             withCredentials: true,
         }).then((res) => {
             this.cookies.remove('token');
-            window.location = '/login';
+            window.location = '/';
         });
     }
 
@@ -112,6 +112,7 @@ class UserProfile extends React.Component{
             showDenyButton: false,
             showCancelButton: true,
             confirmButtonText: `Delete Permanently`,
+            confirmButtonColor: '#FF3547'
         }).then((result) => {
             if (result.isConfirmed) {
                 axios({
@@ -223,9 +224,9 @@ class UserProfile extends React.Component{
                                 </MDBCard>
                             </MDBCol>
                             <MDBCol sm="6" md="8">
-                                <MDBCard style={{marginBottom: 32}}>
+                                <MDBCard style={{marginBottom: 25}}>
                                     {this.state.userProfile ? 
-                                        <MDBCardBody style={{padding: "2rem"}}>
+                                        <MDBCardBody style={{padding: "4rem"}}>
                                         <MDBRow>
                                             <MDBCol style={{ maxWidth: "15rem" }}>
                                                 Full Name
@@ -246,20 +247,6 @@ class UserProfile extends React.Component{
                                             </MDBCol>
                                             <MDBCol>
                                                 <small>{this.state.userProfile.email}</small>
-                                            </MDBCol>
-                                        </MDBRow>
-                                        <hr  style={{
-                                                color: '#2BBBAD',
-                                                backgroundColor: '#2BBBAD',
-                                                height: .2,
-                                                borderColor : '#2BBBAD'
-                                        }}/>
-                                        <MDBRow>
-                                            <MDBCol style={{ maxWidth: "15rem" }}>
-                                                Phone
-                                            </MDBCol>
-                                            <MDBCol>
-                                                <small>{this.state.userProfile.phone}</small>
                                             </MDBCol>
                                         </MDBRow>
                                         <hr  style={{
@@ -301,7 +288,7 @@ class UserProfile extends React.Component{
                                     }
                                 </MDBCard>
                                 <div className="profile_btns">
-                                    <MDBBtn>Edit Profile</MDBBtn>
+                                    {/* <MDBBtn>Edit Profile</MDBBtn> */}
                                     <MDBBtn color="danger" onClick={this.deleteUser}>Delete Account</MDBBtn>
                                     <a href="https://www.buymeacoffee.com/branislavbuna" target="blank">
                                         <MDBBtn className="support_btn">

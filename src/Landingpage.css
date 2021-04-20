@@ -61,6 +61,12 @@ p.feature_para_detail {
 
 img.why_us_img {
     width: 35%;
+    transition: all .5s ease;
+}
+
+img.why_us_img:hover {
+    width: 40%;
+    transition: all .5s ease;
 }
 
 .middle_us {
