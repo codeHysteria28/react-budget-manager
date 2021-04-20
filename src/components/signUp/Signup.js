@@ -105,8 +105,7 @@ class Signup extends  React.Component {
                                         Confirm Your password
                                     </label>
                                     {this.state.conf_password ? <p className="text-danger">{this.state.conf_password}</p>: ''}
-                                    <input type="password" id="defaultFormLoginPasswordExRep" className="form-control mb-2" name="conf_password"/>
-                                    <a href="/login" className="not_a_user_yet">Already a member ?</a>
+                                    <input type="password" id="defaultFormLoginPasswordExRep" className="form-control" name="conf_password"/>
                                     <br/>
                                 </MDBCol>
                                 <MDBCol sm="6" md="6">
@@ -124,8 +123,10 @@ class Signup extends  React.Component {
                                         Monthly Budget
                                     </label>
                                     <input type="number" id="budget" className="form-control" name="budget"/>
+                                    <br/>
                                 </MDBCol>
                             </MDBRow>
+                            <a href="/login" className="not_a_user_yet">Already a member ?</a>
                             <div className="text-center mt-4">
                                 <MDBBtn color="success" className="login_btn" type="submit">Register</MDBBtn>
                             </div>
