@@ -254,12 +254,12 @@ const TablePage = (props) => {
                 <MDBNav className="nav-tabs mt-5">
                     <MDBNavItem>
                         <MDBNavLink link to="#" active={activeItem === "1"} onClick={() => toggle("1")} role="tab" >
-                            Spending Breakdown
+                            Spending
                         </MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem>
                         <MDBNavLink link to="#" active={activeItem === "2"} onClick={() => toggle("2")} role="tab" >
-                            Income Breakdown
+                            Income
                         </MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem>
@@ -269,7 +269,7 @@ const TablePage = (props) => {
                     </MDBNavItem>
                     <MDBNavItem>
                         <MDBNavLink link to="#" active={activeItem === "4"} onClick={() => toggle("4")} role="tab" >
-                            Historical Statistics
+                            Historical
                         </MDBNavLink>
                     </MDBNavItem>
                 </MDBNav>
