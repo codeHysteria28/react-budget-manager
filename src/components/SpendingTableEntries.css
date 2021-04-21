@@ -59,4 +59,8 @@ p.titles {
     top: 1rem;
     width: 45px;
     height: 45px;
-  }
+}
+
+.stats_heading {
+    font-size: 18px;
+}

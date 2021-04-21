@@ -60,141 +60,141 @@ const Footer = () => {
                     <MDBModalBody className="grey-text modal_Body">
                         <MDBRow>
                             <MDBCol>
-                                <img src={bg} className="imgs_lic mr-3"/>
-                                <a href="http://www.freepik.com" target="_blank" className="grey-text text-center">Designed by pch.vector / Freepik</a>
+                                <img src={bg} className="imgs_lic mr-3" alt="icon freepik"/>
+                                <a rel="noreferrer" href="http://www.freepik.com" target="_blank" className="grey-text text-center">Designed by pch.vector / Freepik</a>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={support} className="imgs_lic mr-3"/>
+                                <img src={support} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a href="https://www.freepik.com" target="_blank" title="Freepik" className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" href="https://www.freepik.com" target="_blank" title="Freepik" className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={easy} className="imgs_lic mr-3"/>
+                                <img src={easy} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a target="_blank" href="https://www.freepik.com" title="Freepik" className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" target="_blank" href="https://www.freepik.com" title="Freepik" className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <MDBRow>
                             <MDBCol>
-                                <img src={free} className="imgs_lic mr-3"/>
+                                <img src={free} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a target="_blank" href="https://www.freepik.com" title="Freepik" className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
-                                </span>
-                            </MDBCol>
-                        </MDBRow>
-                        <br/>
-                        <MDBRow>
-                            <MDBCol>
-                                <img src={app} className="imgs_lic mr-3"/>
-                                <span className="text-center">
-                                    Icons made by <a target="_blank" href="https://www.freepik.com" title="Freepik" className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a target="_blank" rel="noreferrer" href="https://www.freepik.com" title="Freepik" className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={cashier} className="imgs_lic mr-3"/>
+                                <img src={app} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a target="_blank" href="" title="surang" className="grey-text">surang</a> from <a className="grey-text" target="_blank" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" target="_blank" href="https://www.freepik.com" title="Freepik" className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={card} className="imgs_lic mr-3"/>
+                                <img src={cashier} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a href="https://www.freepik.com" target="_blank" title="Freepik" className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" target="_blank" href="" title="surang" className="grey-text">surang</a> from <a rel="noreferrer" className="grey-text" target="_blank" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={dest} className="imgs_lic mr-3"/>
+                                <img src={card} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a href="https://www.freepik.com" target="_blank" title="Freepik" className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" href="https://www.freepik.com" target="_blank" title="Freepik" className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={device} className="imgs_lic mr-3"/>
+                                <img src={dest} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a href="https://www.freepik.com" target="_blank" title="Freepik" className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" href="https://www.freepik.com" target="_blank" title="Freepik" className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={fashion} className="imgs_lic mr-3"/>
+                                <img src={device} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a target="_blank" href="https://www.freepik.com" title="Freepik" className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" href="https://www.freepik.com" target="_blank" title="Freepik" className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={gift} className="imgs_lic mr-3"/>
+                                <img src={fashion} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a target="_blank" href="https://www.freepik.com" title="Freepik" className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" target="_blank" href="https://www.freepik.com" title="Freepik" className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={groceries} className="imgs_lic mr-3"/>
+                                <img src={gift} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a target="_blank" href="https://www.freepik.com" title="Freepik"  className="grey-text">Freepik</a> from <a target="_blank"href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" target="_blank" href="https://www.freepik.com" title="Freepik" className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={investment} className="imgs_lic mr-3"/>
+                                <img src={groceries} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                Icons made by <a target="_blank" href="" title="iconixar" className="grey-text">iconixar</a> from <a href="https://www.flaticon.com/" target="_blank" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" target="_blank" href="https://www.freepik.com" title="Freepik"  className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank"href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={mh} className="imgs_lic mr-3"/>
+                                <img src={investment} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a target="_blank" href="https://www.freepik.com" title="Freepik"  className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                Icons made by <a rel="noreferrer" target="_blank" href="" title="iconixar" className="grey-text">iconixar</a> from <a rel="noreferrer" href="https://www.flaticon.com/" target="_blank" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={money} className="imgs_lic mr-3"/>
+                                <img src={mh} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a target="_blank" href="https://www.freepik.com" title="Freepik"  className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" target="_blank" href="https://www.freepik.com" title="Freepik"  className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>
                         <br/>
                         <MDBRow>
                             <MDBCol>
-                                <img src={rocket} className="imgs_lic mr-3"/>
+                                <img src={money} className="imgs_lic mr-3" alt="icon freepik"/>
                                 <span className="text-center">
-                                    Icons made by <a target="_blank" href="https://www.freepik.com" title="Freepik"  className="grey-text">Freepik</a> from <a target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                    Icons made by <a rel="noreferrer" target="_blank" href="https://www.freepik.com" title="Freepik"  className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
+                                </span>
+                            </MDBCol>
+                        </MDBRow>
+                        <br/>
+                        <MDBRow>
+                            <MDBCol>
+                                <img src={rocket} className="imgs_lic mr-3" alt="icon freepik"/>
+                                <span className="text-center">
+                                    Icons made by <a rel="noreferrer" target="_blank" href="https://www.freepik.com" title="Freepik"  className="grey-text">Freepik</a> from <a rel="noreferrer" target="_blank" href="https://www.flaticon.com/" className="grey-text" title="Flaticon">www.flaticon.com</a>
                                 </span>
                             </MDBCol>
                         </MDBRow>

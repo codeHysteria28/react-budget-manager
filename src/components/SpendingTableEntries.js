@@ -7,6 +7,8 @@ import './SpendingTableEntries.css';
 import Statistics from "./Statistics";
 import * as Sentry from "@sentry/react";
 import toast, { Toaster } from 'react-hot-toast';
+import moment from 'moment';
+import HistoricalStatistics from './HistoricalStatistics';
 
 const TablePage = (props) => {
     const [spending,setSpending] = useState(null);
@@ -22,6 +24,7 @@ const TablePage = (props) => {
     const [gift, setGift] = useState(0);
     const [appPayments, setAppPayments] = useState(0);
     const [uncategorized, setUncategorized] = useState(0);
+    const [allData,setAllData] = useState(null);
 
     const data_loaded = () => toast.success('Data loaded successfully.');
 
@@ -68,6 +71,7 @@ const TablePage = (props) => {
             url: "https://budget-manager-app28.herokuapp.com/spending",
         }).then((res) => {
             if(res.data !== {}){
+                setAllData([...res.data]);
                 let arr = [];
                 let obj = {};
                 let total_amount_arr = [];
@@ -79,6 +83,11 @@ const TablePage = (props) => {
                 let total_elect = [];
                 let total_app_pay = [];
                 let total_uncategorized = [];
+
+                const current_month = moment().format('MMM');
+                const current_year = moment().format('YY');
+
+
                 res.data.forEach(item => {
                     obj = {
                         item: item.item,
@@ -87,26 +96,29 @@ const TablePage = (props) => {
                         paid_at: item.paid_at
                     }
 
-                    // totals
-                    total_amount_arr.push(Number(item.price));
+                    // get items for current month and year
+                    if(item.paid_at.includes(current_month) && item.paid_at.includes(current_year)){
+                        // totals
+                        total_amount_arr.push(Number(item.price));
 
-                    // totals for each category
-                    if(item.category === "Travel"){
-                        total_travel.push(Number(item.price));
-                    }else if(item.category === "Groceries") {
-                        total_groceries.push(Number(item.price));
-                    }else if(item.category === "Clothes") {
-                        total_clothes.push(Number(item.price));
-                    }else if(item.category === "Electronics") {
-                        total_elect.push(Number(item.price));
-                    }else if(item.category === "Hobby") {
-                        total_hobby.push(Number(item.price));
-                    }else if(item.category === "Gift") {
-                        total_gift.push(Number(item.price));
-                    }else if(item.category === "App Payments") {
-                        total_app_pay.push(Number(item.price));
-                    }else {
-                        total_uncategorized.push(Number(item.price));
+                        // totals for each category
+                        if(item.category === "Travel"){
+                            total_travel.push(Number(item.price));
+                        }else if(item.category === "Groceries") {
+                            total_groceries.push(Number(item.price));
+                        }else if(item.category === "Clothes") {
+                            total_clothes.push(Number(item.price));
+                        }else if(item.category === "Electronics") {
+                            total_elect.push(Number(item.price));
+                        }else if(item.category === "Hobby") {
+                            total_hobby.push(Number(item.price));
+                        }else if(item.category === "Gift") {
+                            total_gift.push(Number(item.price));
+                        }else if(item.category === "App Payments") {
+                            total_app_pay.push(Number(item.price));
+                        }else {
+                            total_uncategorized.push(Number(item.price));
+                        }
                     }
 
                     arr.push(obj);
@@ -209,11 +221,15 @@ const TablePage = (props) => {
                         return a + b;
                     },0);
 
-                    setTimeout(() => {
-                        setMostExpItem(most_exp_item.toFixed(2));
-                        setTotalAmount(sum_total_amount.toFixed(2));
-                        setMostExpItemName(mostExpItemName);
-                    },1000);
+                    // setTimeout(() => {
+                    //     setMostExpItem(most_exp_item.toFixed(2));
+                    //     setTotalAmount(sum_total_amount.toFixed(2));
+                    //     setMostExpItemName(mostExpItemName);
+                    // },1000);
+
+                    setMostExpItem(most_exp_item.toFixed(2));
+                    setTotalAmount(sum_total_amount.toFixed(2));
+                    setMostExpItemName(mostExpItemName);
 
                     setSpending([...arr]);
                 }
@@ -251,12 +267,16 @@ const TablePage = (props) => {
                             Statistics
                         </MDBNavLink>
                     </MDBNavItem>
+                    <MDBNavItem>
+                        <MDBNavLink link to="#" active={activeItem === "4"} onClick={() => toggle("4")} role="tab" >
+                            Historical Statistics
+                        </MDBNavLink>
+                    </MDBNavItem>
                 </MDBNav>
                 <MDBTabContent activeItem={activeItem} >
                     <MDBTabPane tabId="1" role="tabpanel">
                         <br/>
                         <div>
-                            {/* <h1 style={{marginRight: 15, marginTop: 25}}>Spending Breakdown</h1> */}
                             <SpendingEntryModal user={props.user} entryAdded={getEntries}/>
                         </div>
                         <br/>
@@ -277,7 +297,11 @@ const TablePage = (props) => {
                         uncategorized={uncategorized} 
                         totalAmount={totalAmount} 
                         mostExpItem={mostExpItem} 
-                        mostExpItemName={mostExpItemName}/> 
+                        mostExpItemName={mostExpItemName}
+                        /> 
+                    </MDBTabPane>
+                    <MDBTabPane tabId="4" role="tabpanel">
+                        <HistoricalStatistics bulkSpending={allData}/>
                     </MDBTabPane>
                 </MDBTabContent>
                 <Toaster/>

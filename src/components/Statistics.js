@@ -11,10 +11,12 @@ import hobby from '../images/mental-health.png';
 import uncategorized from '../images/question.png'
 import spend_total from '../images/cashier.png'
 import most_exp_item from '../images/money.png'
+import moment from 'moment';
 
 const Statistics = (props) => {
     return (
         <MDBContainer>
+            <p className="grey-text mt-3 stats_heading">Statistics for month: {moment().format('MMMM')}</p>
             <div className="row statisticRow">
                 {props.totalAmount === null && props.mostExpItem === null && props.mostExpItemName === "" ?
                 <>

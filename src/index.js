@@ -12,7 +12,6 @@ import Login from "./components/Login";
 import UserProfile from './components/UserProfile';
 import LandingPage from './LandingPage';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import ReactGA from 'react-ga';
 
 Sentry.init({
     dsn: "https://3d2de584119d4f89989a6a54c298910a@o556223.ingest.sentry.io/5686782",
@@ -23,9 +22,6 @@ Sentry.init({
     // We recommend adjusting this value in production
     tracesSampleRate: 1.0,
 });
-
-ReactGA.initialize('G-CEGL9RLCRX');
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 render((
         <BrowserRouter>
