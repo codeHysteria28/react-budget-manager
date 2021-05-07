@@ -71,7 +71,6 @@ const TablePage = (props) => {
             url: "https://budget-manager-app28.herokuapp.com/spending",
         }).then((res) => {
             if(res.data !== {}){
-                setAllData([...res.data]);
                 let arr = [];
                 let obj = {};
                 let total_amount_arr = [];
@@ -233,6 +232,8 @@ const TablePage = (props) => {
 
                     setSpending([...arr]);
                 }
+
+                setAllData([...res.data]);
                 data_loaded();
             }else {
                 Swal.fire({
