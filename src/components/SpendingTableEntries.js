@@ -258,18 +258,18 @@ const TablePage = (props) => {
                             Spending
                         </MDBNavLink>
                     </MDBNavItem>
-                    <MDBNavItem>
+                    {/* <MDBNavItem>
                         <MDBNavLink link to="#" active={activeItem === "2"} onClick={() => toggle("2")} role="tab" >
                             Income
                         </MDBNavLink>
-                    </MDBNavItem>
+                    </MDBNavItem> */}
                     <MDBNavItem>
-                        <MDBNavLink link to="#" active={activeItem === "3"} onClick={() => toggle("3")} role="tab" >
+                        <MDBNavLink link to="#" active={activeItem === "2"} onClick={() => toggle("2")} role="tab" >
                             Statistics
                         </MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem>
-                        <MDBNavLink link to="#" active={activeItem === "4"} onClick={() => toggle("4")} role="tab" >
+                        <MDBNavLink link to="#" active={activeItem === "3"} onClick={() => toggle("3")} role="tab" >
                             Historical
                         </MDBNavLink>
                     </MDBNavItem>
@@ -283,10 +283,10 @@ const TablePage = (props) => {
                         <br/>
                         <MDBDataTable responsive striped bordered small data={data} paging={true} sortable={false} info={true}/>
                     </MDBTabPane>
-                    <MDBTabPane tabId="2" role="tabpanel">
+                    {/* <MDBTabPane tabId="2" role="tabpanel">
                          
-                    </MDBTabPane>
-                    <MDBTabPane tabId="3" role="tabpanel">
+                    </MDBTabPane> */}
+                    <MDBTabPane tabId="2" role="tabpanel">
                         <Statistics
                         travel={travel}
                         groceries={groceries}
@@ -301,7 +301,7 @@ const TablePage = (props) => {
                         mostExpItemName={mostExpItemName}
                         /> 
                     </MDBTabPane>
-                    <MDBTabPane tabId="4" role="tabpanel">
+                    <MDBTabPane tabId="3" role="tabpanel">
                         <HistoricalStatistics bulkSpending={allData}/>
                     </MDBTabPane>
                 </MDBTabContent>
