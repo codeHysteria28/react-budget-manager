@@ -96,6 +96,10 @@ class ModalPage extends Component {
                                                 Cost
                                             </label>
                                             <input type="text" name="price" id="price" className="form-control"/>
+                                            <small className="grey-text" style={{fontSize: "10px"}}>
+                                                <small style={{color: "red"}}>*&nbsp;</small>
+                                                for decimal please use dot instead of comma.
+                                            </small>
                                         </div>
                                         <div className="col-sm-6">
                                             <label htmlFor="date" className="grey-text">
