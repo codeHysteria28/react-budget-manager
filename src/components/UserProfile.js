@@ -41,7 +41,7 @@ class UserProfile extends React.Component{
     userProfile = username => {
         axios({
             method: "post",
-            url: "https://budget-manager-app28.herokuapp.com/getProfile",
+            url: "https://budgeter-be.azurewebsites.net/getProfile",
             withCredentials: true,
             data: {user: username}
         }).then((res) => {
@@ -63,7 +63,7 @@ class UserProfile extends React.Component{
     getUserAvatar = username => {
         axios({
             method: "post",
-            url: "https://budget-manager-app28.herokuapp.com/get_avatar",
+            url: "https://budgeter-be.azurewebsites.net/get_avatar",
             withCredentials: true,
             data: {user: username}
         }).then((res) => {
@@ -76,7 +76,7 @@ class UserProfile extends React.Component{
     logout = () => {
         axios({
             method: "post",
-            url: "https://budget-manager-app28.herokuapp.com/logout",
+            url: "https://budgeter-be.azurewebsites.netlogout",
             withCredentials: true,
         }).then((res) => {
             this.cookies.remove('token');
@@ -117,7 +117,7 @@ class UserProfile extends React.Component{
             if (result.isConfirmed) {
                 axios({
                     method: "post",
-                    url: "https://budget-manager-app28.herokuapp.com/deleteUser",
+                    url: "https://budgeter-be.azurewebsites.net/deleteUser",
                     data: {username: this.state.username},
                     withCredentials: true,
                 }).then((res) => {
@@ -158,7 +158,7 @@ class UserProfile extends React.Component{
 
         axios({
             method: "post",
-            url: "https://budget-manager-app28.herokuapp.com/add_avatar",
+            url: "https://budgeter-be.azurewebsites.net/add_avatar",
             withCredentials: true,
             data: data
         }).then(res => {
@@ -181,7 +181,7 @@ class UserProfile extends React.Component{
         if(this.state.new_budget !== null || this.state.new_budget !== undefined) {
             axios({
                 method: "post",
-                url: "https://budget-manager-app28.herokuapp.com/changeBudget",
+                url: "https://budgeter-be.azurewebsites.net/changeBudget",
                 withCredentials: true,
                 data: {new_budget: this.state.new_budget, username: this.state.username}
             }).then(res => {
