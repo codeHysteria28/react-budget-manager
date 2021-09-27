@@ -10,21 +10,7 @@ import * as Sentry from "@sentry/react";
 class ModalPage extends Component {
     state = {
         modal: false,
-        startDate: new Date(),
-        options: [
-            {
-              text: "Option 1",
-              value: "1"
-            },
-            {
-              text: "Option 2",
-              value: "2"
-            },
-            {
-              text: "Option 3",
-              value: "3"
-            }
-          ]
+        startDate: new Date()
     }
 
     toggle = () => {
@@ -48,7 +34,7 @@ class ModalPage extends Component {
         entry_obj.paid_at = moment(this.state.startDate).format('MMM Do YY');
 
         if (entry_obj !== {}){
-            axios.post('/add_spending', entry_obj).then((res) => {
+            axios.post('https://budgeter-be.azurewebsites.net/add_spending', entry_obj).then((res) => {
                 if(res.data === "Spending added successfully") {
                     this.handleChange();
                     Swal.fire({
@@ -103,19 +89,30 @@ class ModalPage extends Component {
                                 </select>
                                 <br />
                                 <br />
-                                <label htmlFor="price" className="grey-text">
-                                    Cost
-                                </label>
-                                <input type="text" name="price" id="price" className="form-control" />
-                                <br />
-                                <label htmlFor="date" className="grey-text">
-                                    Date
-                                </label><br />
-                                <input type="hidden" name="paid_at" value={this.state.startDate}/>
-                                <DatePicker selected={this.state.startDate} onChange={date => this.setState({startDate: date})} />
+                                <div className="form-group">
+                                    <div className="row">
+                                        <div className="col-sm-6">
+                                            <label htmlFor="price" className="grey-text">
+                                                Cost
+                                            </label>
+                                            <input type="text" name="price" id="price" className="form-control"/>
+                                            <small className="grey-text" style={{fontSize: "10px"}}>
+                                                <small style={{color: "red"}}>*&nbsp;</small>
+                                                for decimal please use dot instead of comma.
+                                            </small>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <label htmlFor="date" className="grey-text">
+                                                Date
+                                            </label><br />
+                                            <input type="hidden" name="paid_at" value={this.state.startDate}/>
+                                            <DatePicker selected={this.state.startDate} onChange={date => this.setState({startDate: date})} className="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
                         </MDBModalBody>
                         <MDBModalFooter>
-                            <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
+                            <MDBBtn color="default" onClick={this.toggle}>Close</MDBBtn>
                             <MDBBtn color="primary" type="submit">Add entry</MDBBtn>
                         </MDBModalFooter>
                     </form>

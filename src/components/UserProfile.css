@@ -1,0 +1,23 @@
+.support_btn {
+    background-color: #FFDC03 !important;
+}
+
+img.kofi {
+    width: 20px;
+    height: 20px;
+}
+
+.avatar_handler {
+    background-color: unset;
+    border: none;
+    outline: none;
+}
+
+.avatar_handler:focus {
+    border: none;
+    outline: none;
+}
+
+.profile_btns {
+    margin-left: -5px;
+}
