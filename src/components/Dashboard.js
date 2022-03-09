@@ -24,7 +24,7 @@ class Dashboard extends React.Component  {
     logout = () => {
         axios({
             method: "post",
-            url: "http://localhost:1998/logout",
+            url: "https://budgeterapp.azurewebsites.net/logout",
             withCredentials: true,
         }).then((res) => {
             this.cookies.remove('token');

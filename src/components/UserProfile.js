@@ -41,7 +41,7 @@ class UserProfile extends React.Component{
     userProfile = username => {
         axios({
             method: "post",
-            url: "http://localhost:1998/getProfile",
+            url: "https://budgeterapp.azurewebsites.net/getProfile",
             withCredentials: true,
             data: {user: username}
         }).then((res) => {
@@ -54,7 +54,7 @@ class UserProfile extends React.Component{
     getUserAvatar = username => {
         axios({
             method: "post",
-            url: "http://localhost:1998/get_avatar",
+            url: "https://budgeterapp.azurewebsites.net/get_avatar",
             withCredentials: true,
             data: {user: username}
         }).then((res) => {
@@ -65,7 +65,7 @@ class UserProfile extends React.Component{
     logout = () => {
         axios({
             method: "post",
-            url: "http://localhost:1998/logout",
+            url: "https://budgeterapp.azurewebsites.net/logout",
             withCredentials: true,
         }).then((res) => {
             this.cookies.remove('token');
@@ -106,7 +106,7 @@ class UserProfile extends React.Component{
             if (result.isConfirmed) {
                 axios({
                     method: "post",
-                    url: "http://localhost:1998/deleteUser",
+                    url: "https://budgeterapp.azurewebsites.net/deleteUser",
                     data: {username: this.state.username},
                     withCredentials: true,
                 }).then((res) => {
@@ -147,7 +147,7 @@ class UserProfile extends React.Component{
 
         axios({
             method: "post",
-            url: "http://localhost:1998/add_avatar",
+            url: "https://budgeterapp.azurewebsites.net/add_avatar",
             withCredentials: true,
             data: data,
             origFileName: this.state.file
@@ -171,7 +171,7 @@ class UserProfile extends React.Component{
         if(this.state.new_budget !== null || this.state.new_budget !== undefined) {
             axios({
                 method: "post",
-                url: "http://localhost:1998/changeBudget",
+                url: "https://budgeterapp.azurewebsites.net/changeBudget",
                 withCredentials: true,
                 data: {new_budget: this.state.new_budget, username: this.state.username}
             }).then(res => {

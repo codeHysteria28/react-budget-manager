@@ -21,7 +21,7 @@ const Login = () => {
                 password: loginPassword
             },
             withCredentials: true,
-            url: "http://localhost:1998/login",
+            url: "https://budgeterapp.azurewebsites.net/login",
         }).then((res) => {
             if(res.data === "No user exists" || res.data === "Wrong password"){
                 Swal.fire({

@@ -34,7 +34,7 @@ class ModalPage extends Component {
         entry_obj.paid_at = moment(this.state.startDate).format('MMM Do YY');
 
         if (entry_obj !== {}){
-            axios.post('http://localhost:1998/add_spending', entry_obj).then((res) => {
+            axios.post('https://budgeterapp.azurewebsites.net/add_spending', entry_obj).then((res) => {
                 if(res.data === "Spending added successfully") {
                     this.handleChange();
                     Swal.fire({
