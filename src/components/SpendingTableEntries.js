@@ -68,7 +68,7 @@ const TablePage = (props) => {
                 username: props.user
             },
             withCredentials: true,
-            url: "https://budgeter-be.azurewebsites.net/spending",
+            url: "http://localhost:1998/spending",
         }).then((res) => {
             if(res.data !== {}){
                 let arr = [];

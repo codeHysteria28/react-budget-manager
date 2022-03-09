@@ -41,7 +41,7 @@ class UserProfile extends React.Component{
     userProfile = username => {
         axios({
             method: "post",
-            url: "https://budgeter-be.azurewebsites.net/getProfile",
+            url: "http://localhost:1998/getProfile",
             withCredentials: true,
             data: {user: username}
         }).then((res) => {
@@ -51,32 +51,21 @@ class UserProfile extends React.Component{
         });
     }
 
-    arrayBufferToBase64 = buffer => {
-        let binary = '';
-        let bytes = [].slice.call(new Uint8Array(buffer));
-
-        bytes.forEach((b) => binary += String.fromCharCode(b));
-
-        return window.btoa(binary);
-    }
-
     getUserAvatar = username => {
         axios({
             method: "post",
-            url: "https://budgeter-be.azurewebsites.net/get_avatar",
+            url: "http://localhost:1998/get_avatar",
             withCredentials: true,
             data: {user: username}
         }).then((res) => {
-            let base64Flag = `data:${res.data.contentType};base64,`;
-            let imageStr = this.arrayBufferToBase64(res.data.avatar.data);
-            this.setState({avatar: base64Flag + imageStr})
+            this.setState({avatar: res.data.avatar})
         });
     }
 
     logout = () => {
         axios({
             method: "post",
-            url: "https://budgeter-be.azurewebsites.netlogout",
+            url: "http://localhost:1998/logout",
             withCredentials: true,
         }).then((res) => {
             this.cookies.remove('token');
@@ -117,7 +106,7 @@ class UserProfile extends React.Component{
             if (result.isConfirmed) {
                 axios({
                     method: "post",
-                    url: "https://budgeter-be.azurewebsites.net/deleteUser",
+                    url: "http://localhost:1998/deleteUser",
                     data: {username: this.state.username},
                     withCredentials: true,
                 }).then((res) => {
@@ -158,9 +147,10 @@ class UserProfile extends React.Component{
 
         axios({
             method: "post",
-            url: "https://budgeter-be.azurewebsites.net/add_avatar",
+            url: "http://localhost:1998/add_avatar",
             withCredentials: true,
-            data: data
+            data: data,
+            origFileName: this.state.file
         }).then(res => {
             this.getUserAvatar(this.state.username);
             this.toggle();
@@ -181,7 +171,7 @@ class UserProfile extends React.Component{
         if(this.state.new_budget !== null || this.state.new_budget !== undefined) {
             axios({
                 method: "post",
-                url: "https://budgeter-be.azurewebsites.net/changeBudget",
+                url: "http://localhost:1998/changeBudget",
                 withCredentials: true,
                 data: {new_budget: this.state.new_budget, username: this.state.username}
             }).then(res => {
