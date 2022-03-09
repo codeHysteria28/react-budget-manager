@@ -46,7 +46,7 @@ class Signup extends  React.Component {
                 return false;
             }else {
 
-                axios.post('https://budgeterapp.azurewebsites.net/register', user_obj).then((res) => {
+                axios.post('https://budgeter.azureedge.net/register', user_obj).then((res) => {
                     if(res.data === "success") {
                         Swal.fire({
                             icon: 'success',
